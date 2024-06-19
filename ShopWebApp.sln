@@ -1,0 +1,38 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34408.163
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShopWebApp", "ShopWebApp\ShopWebApp.csproj", "{0E4D05A5-AA54-430A-B190-78F29336C873}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ShopManagement", "ShopManagement", "{0C4BF3D3-AE6B-4815-9EBD-7C230B064002}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Application", "SM.Application", "{616BDF62-9F31-4017-9B93-0885E40A9180}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Domain", "SM.Domain", "{9624DC2E-C59D-4B21-B199-2CED9AB320F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SM.Infrastructure", "SM.Infrastructure", "{F4E25C7E-EDCF-4EA6-8D07-32859694DC74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0E4D05A5-AA54-430A-B190-78F29336C873}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0E4D05A5-AA54-430A-B190-78F29336C873}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0E4D05A5-AA54-430A-B190-78F29336C873}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0E4D05A5-AA54-430A-B190-78F29336C873}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{616BDF62-9F31-4017-9B93-0885E40A9180} = {0C4BF3D3-AE6B-4815-9EBD-7C230B064002}
+		{9624DC2E-C59D-4B21-B199-2CED9AB320F2} = {0C4BF3D3-AE6B-4815-9EBD-7C230B064002}
+		{F4E25C7E-EDCF-4EA6-8D07-32859694DC74} = {0C4BF3D3-AE6B-4815-9EBD-7C230B064002}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8D6B2071-66CB-4FC4-A940-790FC69F60F3}
+	EndGlobalSection
+EndGlobal
