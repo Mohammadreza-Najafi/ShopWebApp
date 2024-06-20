@@ -1,5 +1,4 @@
-﻿
-using _0_Framwork.Domain;
+﻿using _0_Framwork.Domain;
 using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
 
