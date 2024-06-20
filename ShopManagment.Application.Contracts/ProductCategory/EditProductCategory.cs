@@ -1,5 +1,5 @@
 ﻿
-namespace ShopManagment.Application.Contracts.ProductCategory
+namespace ShopManagement.Application.Contracts.ProductCategory
 {
     public class EditProductCategory : CreateProductCategory
     {
