@@ -1,6 +1,6 @@
 ﻿using _0_Framwork.Domain;
 
-namespace ShopManagmentDomain.ProductCategoryAgg
+namespace ShopManagementDomain.ProductCategoryAgg
 {
     public class ProductCategory : EntityBase
     {
