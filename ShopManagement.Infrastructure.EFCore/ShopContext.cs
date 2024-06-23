@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductCategoryAgg;
+using ShopManagement.Infrastructure.EFCore.Mapping;
 
 namespace ShopManagement.Infrastructure.EFCore
 {
@@ -13,10 +14,13 @@ namespace ShopManagement.Infrastructure.EFCore
 
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=LAPTOP-C2ACJL4H;Initial Catalog=shop-july;Integrated Security=True;Trust Server Certificate=True");
 
+            var assembly = typeof(ProductCategoryMapping).Assembly;
+            modelBuilder.ApplyConfigurationsFromAssembly(assembly);
+
+            base.OnModelCreating(modelBuilder);
         }
 
     }
