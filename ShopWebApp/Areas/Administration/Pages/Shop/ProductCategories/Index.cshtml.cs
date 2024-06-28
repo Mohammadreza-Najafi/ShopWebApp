@@ -6,11 +6,9 @@ using ShopManagement.Application.Contracts.ProductCategory;
 namespace ShopWebApp.Areas.Adminstration.Pages.Shop.ProductCategories
 {
     public class IndexModel : PageModel
-    {
-
-        public ProductCategorySearchModel SearchModel { get; set; }
+    {     
         public List<ProductCategoryViewModel> ProductCategories { get; set; }
-
+        //public ProductCategorySearchModel SearchModel { get; set; }
         private readonly IProductCategoryApplication _productCategoryApplication;
 
         public IndexModel(IProductCategoryApplication productCategoryApplication)
