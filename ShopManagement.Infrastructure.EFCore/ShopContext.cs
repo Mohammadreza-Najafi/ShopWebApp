@@ -24,7 +24,8 @@ namespace ShopManagement.Infrastructure.EFCore
 
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ProductCategoryMapping).Assembly)
                 .ApplyConfigurationsFromAssembly(typeof(Product).Assembly)
-                .ApplyConfigurationsFromAssembly(typeof(ProductPicture).Assembly);
+                .ApplyConfigurationsFromAssembly(typeof(ProductPicture).Assembly)
+                .ApplyConfigurationsFromAssembly(typeof(Slide).Assembly);
      
 
             base.OnModelCreating(modelBuilder);
