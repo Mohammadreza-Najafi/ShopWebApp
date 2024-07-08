@@ -1,0 +1,106 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Shop.Products.CreateModel
+
+<div class="container container--max--xl">
+
+    <div class="card">
+        <div class="card-body p-5">
+
+            <div class="mb-5">
+                <h2 class="mb-0 fs-exact-18">Create New Product</h2>
+            </div>
+
+            <form asp-page="./Create"  method="post" class="row g-4">
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.Name" class="form-label">Name</label>
+                    <input type="text" asp-for="@Model.CreateProduct.Name" class="form-control" />
+
+                    @* <span asp-validation-for="Name" class="alert-sa-danger-card"></span> *@
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.Code" class="form-label">Code</label>
+                    <input type="text" asp-for="@Model.CreateProduct.Code" class="form-control" />
+
+                    @* <span asp-validation-for="Code" class="alert-sa-danger-card"></span> *@
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.UnitPrice" class="form-label">Unit price</label>
+                    <input type="text" asp-for="@Model.CreateProduct.UnitPrice" class="form-control" />
+
+                    @* <span asp-validation-for="UnitPrice" class="alert-sa-danger-card"></span> *@
+                </div>
+                @* ToDO *@
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.CategoryId" class="form-label">Product Category</label>
+                    <select asp-for="@Model.CreateProduct.CategoryId" asp-items='new SelectList(Model.Categories,"Id","Name")' class="form-select">
+                        <option value="0">Product Category</option>
+                    </select>
+
+                    @* <span asp-validation-for="@Model.CreateProduct.CategoryId" class="alert-sa-danger-card"></span> *@
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="@Model.CreateProduct.Picture" class="form-label">Picture</label>
+                    <input type="text" asp-for="@Model.CreateProduct.Picture" class="form-control" />
+
+                    @* <span asp-validation-for="Picture" class="alert-sa-danger-card"></span> *@
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.PictureAlt" class="form-label">Alt</label>
+                    <input type="text" asp-for="@Model.CreateProduct.PictureAlt" class="form-control" />
+
+                    @* <span asp-validation-for="PictureAlt" class="alert-sa-danger-card"></span> *@
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.PictureTitle" class="form-label">Title</label>
+                    <input type="text" asp-for="@Model.CreateProduct.PictureTitle" class="form-control" />
+
+                    @* <span asp-validation-for="PictureTitle" class="alert-sa-danger-card"></span> *@
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="@Model.CreateProduct.ShortDescription" class="form-label">Short Description</label>
+                    <textarea class="form-control" asp-for="@Model.CreateProduct.ShortDescription" rows="4"></textarea>
+
+                    @* <span asp-validation-for="Description" class="alert-sa-danger-card"></span> *@
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="@Model.CreateProduct.Description" class="form-label">Description</label>
+                    <textarea class="form-control" asp-for="@Model.CreateProduct.Description" rows="4"></textarea>
+
+                    @* <span asp-validation-for="Description" class="alert-sa-danger-card"></span> *@
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.Slug" class="form-label">Slug</label>
+                    <input type="text" asp-for="@Model.CreateProduct.Slug" class="form-control" />
+
+                    @* <span asp-validation-for="Slug" class="alert-sa-danger-card"></span> *@
+                </div>
+                <div class="col-md-6">
+                    <label asp-for="@Model.CreateProduct.Keywords" class="form-label">Keywords</label>
+                    <input type="text" asp-for="@Model.CreateProduct.Keywords" class="form-control" />
+
+                    @* <span asp-validation-for="Keywords" class="alert-sa-danger-card"></span> *@
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="@Model.CreateProduct.MetaDescription" class="form-label">Meta Description</label>
+                    <textarea class="form-control" asp-for="@Model.CreateProduct.MetaDescription" rows="4"></textarea>
+
+                    @* <span asp-validation-for="MetaDescription" class="error alert-sa-danger-card"></span> *@
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
