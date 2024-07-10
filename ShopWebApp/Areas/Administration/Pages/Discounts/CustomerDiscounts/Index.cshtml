@@ -37,49 +37,26 @@
             </thead>
             <tbody>
 
-                @foreach (var item in Model.Products)
+                @foreach (var item in Model.CustomerDiscounts)
                 {
                     <tr>
-                        <td>@item.Id</td>
-                        <td>
-                            <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
-                        </td>
+                        <td>@item.Id</td>                        
+                        <td>@item.Product</td>
+                        <td>@item.DiscountRate</td>
+                        <td>@item.StartDate</td>
+                        <td>@item.EndDate</td>
                         <td>@item.Name</td>
-                        <td>@item.Code</td>
-                        <td>@item.Category</td>
-                        <td>@item.UnitPrice</td>
-                        <td>
-                            @if (item.IsInStock)
-                            {
-                                <i class="fa fa-check fa-3x text-success"></i>
-                            }
-                            else
-                            {
-                                <i class="fa fa-remove fa-3x text-danger"></i>
-                            }
-                        </td>
-
                         <td>@item.CreationDate</td>
 
                         <td>
+
                             <a class="btn btn-warning pull-right m-rl-5"
                                href="@Url.Page("./Edit", new { id = item.Id})">
                                 <i class="fa fa-edit"></i> Edit
                             </a>
 
-                            @if (item.IsInStock)
-                            {
-                                <a asp-page="./Index" asp-page-handler="NotInStock" asp-route-id="@item.Id"
-                                   class="btn btn-danger">Not Stock</a>
-                            }
-                            else
-                            {
-                                <a asp-page="./Index" asp-page-handler="IsInStock" asp-route-id="@item.Id"
-                                   class="btn btn-success"> In Stock </a>
-                            }
-
-
                         </td>
+                     
                     </tr>
                 }
 

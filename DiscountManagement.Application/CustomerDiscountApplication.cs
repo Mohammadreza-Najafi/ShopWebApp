@@ -1,7 +1,7 @@
 ﻿using _0_Framwork.Application;
-using DiscountManagement.Application.Contract;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using DiscountManagement.Domain.CustomerDiscountAgg;
+using System.Globalization;
 
 namespace DiscountManagement.Application
 {
@@ -17,14 +17,24 @@ namespace DiscountManagement.Application
         {
             var operation = new OperationResult();
 
-            if (_customerDiscountRepository.Exists(x => x.ProductId == command.ProductId && x.DiscountRate == command.DiscountRate))
+            if (_customerDiscountRepository
+                .Exists(x => x.ProductId == command.ProductId &&
+                x.DiscountRate == command.DiscountRate))
             {               
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);
             }
 
-            var customerDiscount = new CustomerDiscount(command.ProductId, command.Name, command.DiscountRate,
-                DateTime.Parse(command.StartDate), DateTime.Parse(command.EndDate));
+            DateTime startDate;
+            DateTime.TryParseExact(command.StartDate, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate);
 
+            DateTime endDate;
+            DateTime.TryParseExact(command.EndDate, "MM/dd/yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out endDate);
+
+            var customerDiscount = new CustomerDiscount(command.ProductId, command.Name, command.DiscountRate,
+                startDate, endDate);
+
+            _customerDiscountRepository.Create(customerDiscount);
+            
             _customerDiscountRepository.SaveChanges();
 
             return operation.Succedded();
@@ -52,15 +62,10 @@ namespace DiscountManagement.Application
             return operation.Succedded();
         }
 
-     
-      
-
         public EditCustomerDiscount GetDetails(long id)
         {
             return _customerDiscountRepository.GetDetails(id);
         }
-
-     
 
         public List<CustomerDiscountViewModel> Search(CustomerDiscountSearchModel searchModel)
         {

@@ -1,12 +1,11 @@
 ﻿using _0_Framwork.Infrastructure;
-using DiscountManagement.Application.Contract;
 using DiscountManagement.Application.Contract.CustomerDiscount;
 using DiscountManagement.Domain.CustomerDiscountAgg;
 using ShopManagement.Infrastructure.EFCore;
 
 namespace DiscountManagement.Infrastructure.EFCore.Repository
 {
-    
+
     public class CustomerDiscountRepository : RepositoryBase<long,CustomerDiscount> , ICustomerDiscountRepository
     {
         private readonly DiscountContext _context;

@@ -11,7 +11,7 @@ namespace ShopWebApp.Areas.Administration.Pages.Discounts.CustomerDiscounts
         [BindProperty]
         public DefineCustomerDiscount CustomerDiscount { get; set; }
 
-        public List<ProductCategoryViewModel> Categories;
+        public List<ProductViewModel> Products { get; set; }
 
         private readonly ICustomerDiscountApplication _customerDiscountApplication;
         private readonly IProductApplication _productApplication;
@@ -24,7 +24,7 @@ namespace ShopWebApp.Areas.Administration.Pages.Discounts.CustomerDiscounts
         }
         public void OnGet()
         {
-            
+            Products = _productApplication.GetProducts();
         }
 
         public IActionResult OnPost()

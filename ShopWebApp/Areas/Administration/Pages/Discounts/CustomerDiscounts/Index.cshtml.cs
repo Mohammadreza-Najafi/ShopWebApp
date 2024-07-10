@@ -8,7 +8,6 @@ namespace ShopWebApp.Areas.Administration.Pages.Discounts.CustomerDiscounts
 {
     public class IndexModel : PageModel
     {
-
         public List<CustomerDiscountViewModel> CustomerDiscounts { get; set; }
         //[TempData]
         //public string Message { get; set; }
