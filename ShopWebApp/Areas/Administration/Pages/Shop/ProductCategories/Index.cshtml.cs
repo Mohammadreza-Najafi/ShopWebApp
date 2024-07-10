@@ -3,10 +3,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.ProductCategory;
 
 
-namespace ShopWebApp.Areas.Adminstration.Pages.Shop.ProductCategories
+namespace ShopWebApp.Areas.Administration.Pages.Shop.ProductCategories
 {
     public class IndexModel : PageModel
-    {     
+    {
         public List<ProductCategoryViewModel> ProductCategories { get; set; }
         //public ProductCategorySearchModel SearchModel { get; set; }
         private readonly IProductCategoryApplication _productCategoryApplication;
@@ -23,9 +23,9 @@ namespace ShopWebApp.Areas.Adminstration.Pages.Shop.ProductCategories
             ProductCategories = _productCategoryApplication.Search(searchModel);
         }
 
-        public IActionResult OnPostCreate(CreateProductCategory command) 
+        public IActionResult OnPostCreate(CreateProductCategory command)
         {
-             _productCategoryApplication.Create(command);
+            _productCategoryApplication.Create(command);
 
             return RedirectToPage("./Index");
 
