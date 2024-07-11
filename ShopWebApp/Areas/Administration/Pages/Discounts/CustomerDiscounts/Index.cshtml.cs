@@ -9,18 +9,15 @@ namespace ShopWebApp.Areas.Administration.Pages.Discounts.CustomerDiscounts
     public class IndexModel : PageModel
     {
         public List<CustomerDiscountViewModel> CustomerDiscounts { get; set; }
+
         //[TempData]
         //public string Message { get; set; }
         //public ProductSearchModel SearchModel { get; set; }
-        //public SelectList ProductCategories;
-
 
         private readonly ICustomerDiscountApplication _customerDiscountApplication;
-        private readonly IProductApplication _productApplication;
 
-        public IndexModel(IProductApplication productApplication, ICustomerDiscountApplication customerDiscountApplication)
-        {
-            _productApplication = productApplication;
+        public IndexModel(ICustomerDiscountApplication customerDiscountApplication)
+        {          
             _customerDiscountApplication = customerDiscountApplication;
         }
         public void OnGet(CustomerDiscountSearchModel searchModel)
@@ -28,30 +25,5 @@ namespace ShopWebApp.Areas.Administration.Pages.Discounts.CustomerDiscounts
             CustomerDiscounts = _customerDiscountApplication.Search(searchModel);
         }
 
-        public IActionResult OnGetNotInStock(long id)
-        {
-            var result = _productApplication.NotInStock(id);
-
-            if (result.IsSuccedded)
-            {               
-                //Message = result.Message;
-            }
-
-            return RedirectToPage("./Index");
-
-        }
-
-        public IActionResult OnGetIsInStock(long id)
-        {
-            var result = _productApplication.IsStock(id);
-
-            if (result.IsSuccedded)
-            {
-                //Message = result.Message;
-            }
-
-            return RedirectToPage("./Index");
-
-        }
     }
 }

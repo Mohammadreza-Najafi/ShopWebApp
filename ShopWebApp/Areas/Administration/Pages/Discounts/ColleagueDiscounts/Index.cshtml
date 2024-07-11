@@ -1,0 +1,74 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Discounts.ColleagueDiscounts.IndexModel
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">Colleague Discounts</h1>
+            </div>
+
+            <div class="col-auto d-flex"><a href="@Url.Page("./Create")" class="btn btn-primary">Define Colleague Discount</a></div>
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Discount Rate</th>                    
+                    <th>Creation Date</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.ColleagueDiscounts)
+                {
+                    <tr>
+                        <td>@item.Id</td>                        
+                        <td>@item.Product</td>
+                        <td>@item.DiscountRate%</td>    
+                        <td>@item.CreationDate</td>
+
+                        <td>
+
+                            <a class="btn btn-warning pull-right m-rl-5"
+                               href="@Url.Page("./Edit", new { id = item.Id})">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+
+                            @if (item.IsRemoved)
+                            {
+                                <a asp-page="./Index" asp-page-handler="Restore" asp-route-id="@item.Id"
+                                   class="btn btn-success">Active</a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-page-handler="Remove" asp-route-id="@item.Id"
+                                   class="btn btn-danger">De Active</a>
+                            }
+
+                        </td>
+                     
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
