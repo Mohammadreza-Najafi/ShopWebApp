@@ -45,33 +45,7 @@
                 </div>
 
                 <div class="sa-sidebar__body" data-simplebar="">
-                    <ul class="sa-nav sa-nav--sidebar" data-sa-collapse="">
-
-
-                        <li class="sa-nav__section">
-                            <div class="sa-nav__section-title"><span>App</span></div>
-
-                            <ul class="sa-nav__menu sa-nav__menu--root">
-
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a asp-page="/Index" class="sa-nav__link">
-                                        <span class="sa-nav__title">Dashboard</span>
-                                    </a>
-                                </li>
-
-                                <li class="sa-nav__menu-item sa-nav__menu-item--has-icon">
-                                    <a asp-page="/Shop/ProductCategories/Index" class="sa-nav__link">
-                                        <span class="sa-nav__title">Categories</span>
-                                    </a>
-                                </li>
-
-
-
-                            </ul>
-                        </li>
-
-
-                    </ul>
+                    <partial name="_Menu" />
                 </div>
             </div>
             <div class="sa-app__sidebar-shadow"></div>
@@ -352,7 +326,7 @@
             <!-- sa-app__footer / end -->
         </div><!-- sa-app__content / end -->
         <!-- sa-app__toasts -->
-         <div class="sa-app__toasts toast-container bottom-0 end-0"></div><!-- sa-app__toasts / end -->
+        <div class="sa-app__toasts toast-container bottom-0 end-0"></div><!-- sa-app__toasts / end -->
     </div><!-- sa-app / end -->
     <!-- scripts -->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
@@ -380,7 +354,7 @@
     @* <script src="~/AdminTheme/js/site.js"></script> *@
 
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script> 
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 
     @* @RenderSection("Scripts", false); *@
 
