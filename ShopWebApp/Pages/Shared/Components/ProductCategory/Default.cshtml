@@ -1,0 +1,37 @@
+﻿@model List<_01_ShopQuery.Contracts.ProductCategory.ProductCategoryQueryModel>
+
+<div class="section-017">
+    <div class="row">
+
+        @foreach (var item in Model){
+
+            <div class="col-md-12 col-lg-4">
+                <div class="furgan-banner style-08 left-center">
+                    <div class="banner-inner">
+                        <figure class="banner-thumb">
+                            <img src="~/Theme/assets/images/banner31.jpg" class="attachment-full size-full" alt="img">
+                        </figure>
+                        <div class="banner-info ">
+                            <div class="banner-content">
+                                <div class="title-wrap">
+                                    <h6 class="title">
+                                        @item.Name
+                                    </h6>
+                                </div>
+                                <div class="cate">
+                                    50% sale off
+                                </div>
+                                <div class="button-wrap">
+                                    <a class="button" asp-page="/ProductCategory" asp-route-id="@item.Slug">
+                                        Shop now
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+       
+    </div>
+</div>

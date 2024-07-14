@@ -1,5 +1,4 @@
 using DiscountManagement.Configuration;
-using InventoryManagement.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Configuration;
 using ShopManagement.Infrastructure.EFCore;
@@ -12,7 +11,6 @@ builder.Services.AddDbContext<ShopContext>(options => options.UseSqlServer(conne
 
 ShopManagementBootstrapper.Configure(builder.Services, connectionString);
 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
-InventoryManagementBootstrapper.Configure(builder.Services, connectionString);
 
 builder.Services.AddRazorPages();
 var app = builder.Build();

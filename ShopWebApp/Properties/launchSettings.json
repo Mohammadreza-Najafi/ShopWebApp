@@ -23,7 +23,7 @@
       "dotnetRunMessages": true,
       "launchBrowser": true,
       "applicationUrl": "https://localhost:7202;http://localhost:5048",
-      "launchUrl": "Administration/Discounts/ColleagueDiscounts",
+      "launchUrl": "administration/shop/Slides",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }

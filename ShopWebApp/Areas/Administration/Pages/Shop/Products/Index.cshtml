@@ -1,0 +1,93 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Shop.Products.IndexModel
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">Products</h1>
+            </div>
+
+            <div class="col-auto d-flex"><a href="@Url.Page("./Create")" class="btn btn-primary">New Product</a></div>
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Code</th>
+                    <th>Category</th>
+                    <th>UnitPrice</th>
+                    <th>Stock</th>
+                    <th>Creation Date</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Products)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.Code</td>
+                        <td>@item.Category</td>
+                        <td>@item.UnitPrice</td>
+                        <td>
+                            @if (item.IsInStock)
+                            {
+                                <i class="fa fa-check fa-3x text-success"></i>
+                            }
+                            else
+                            {
+                                <i class="fa fa-remove fa-3x text-danger"></i>
+                            }
+                        </td>
+
+                        <td>@item.CreationDate</td>
+
+                        <td>
+                            <a class="btn btn-warning pull-right m-rl-5"
+                               href="@Url.Page("./Edit", new { id = item.Id})">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+
+                            @if (item.IsInStock)
+                            {
+                                <a asp-page="./Index" asp-page-handler="NotInStock" asp-route-id="@item.Id"
+                                   class="btn btn-danger">Not Stock</a>
+                            }
+                            else
+                            {
+                                <a asp-page="./Index" asp-page-handler="IsInStock" asp-route-id="@item.Id"
+                                   class="btn btn-success"> In Stock </a>
+                            }
+
+
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

@@ -1,0 +1,68 @@
+﻿@page
+@model  ShopWebApp.Areas.Administration.Pages.Shop.ProductCategories.IndexModel
+@{
+    ViewData["title"] = "Manage Products Category";
+}
+
+<!-- sa-app__body -->
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">Categories</h1>
+            </div>
+
+            <div class="col-auto d-flex"><a href="@Url.Page("./Create")" class="btn btn-primary">New Category</a></div>
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>Creation Date</th>
+                    <th>Opertion</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.ProductCategories)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
+                        </td>
+                        <td>@item.Name</td>
+                        <td>@item.CreationDate</td>
+                        <td>
+                            <a class="btn btn-warning pull-right m-rl-5"
+                               href="@Url.Page("./Edit", new { id = item.Id})">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<!-- sa-app__body / end -->
