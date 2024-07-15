@@ -1,0 +1,120 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Inventory.IndexModel
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Products</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">Inventory</h1>
+            </div>
+
+            <div class="col-auto d-flex"><a href="@Url.Page("./Create")" class="btn btn-primary">Create Inventory</a></div>
+
+        </div>
+    </div>
+
+    <div class="card text-dark bg-secondary shadow-none">
+        <h5 class="card-header">Search in Inventory</h5>
+
+        <div class="card-body">
+            <form asp-page="Index" method="get">
+
+                <div class="row">
+
+                    <div class="col-lg-4 row">
+                        <label asp-for="@Model.SearchModel.ProductId" class="col-auto col-form-label">Product</label>
+                        <div class="col-lg-9">
+                            <select asp-for="@Model.SearchModel.ProductId" asp-items='new SelectList(Model.Products, "Id", "Name")'
+                                    class="form-select">
+                                <option value="0">Choose Product</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <div class="col-lg-6 p-0">
+                        <label class="form-check form-switch col-auto">
+                            
+                            <span class="form-check-label">Search in UnAvailable</span>
+                            <input type="checkbox" asp-for="@Model.SearchModel.InStock" class="form-check-input" />
+                        </label>
+                    </div>
+
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+
+
+                    <a asp-page="./Index" class="btn btn-primary col-auto">See All</a>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+    
+    <div class="card mt-3">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Count</th>
+                    <th>Creation Date</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Inventory)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>@item.Product</td>
+                        <td>@item.UnitPrice</td>
+                        <td>@item.CurrentCount</td>
+                        <td>@item.CreationDate</td>
+
+                        <td>
+
+                            <a class="btn btn-warning pull-right m-rl-5"
+                               href="@Url.Page("./Edit", new { id = item.Id})">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+
+                            <a class="btn btn-success pull-right m-rl-5"
+                               href="#showmodal=@Url.Page("./Index","Increase",new { id = item.Id})">
+                                Increase
+                            </a>
+
+                            <a class="btn btn-danger pull-right m-rl-5"
+                               href="#showmodal=@Url.Page("./Index","Reduce",new { id = item.Id})">
+                                Decrease
+                            </a>
+
+                            <a class="btn btn-primary pull-right m-rl-5"
+                               href="#showmodal=@Url.Page("./Index","Log",new { id = item.Id})">
+                                Inventory operation
+                            </a>
+
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

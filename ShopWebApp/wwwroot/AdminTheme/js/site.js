@@ -1,7 +1,6 @@
 ﻿var SinglePage = {};
 
 SinglePage.LoadModal = function () {
-    //alert("wsf");
     var url = window.location.hash.toLowerCase();
     if (!url.startsWith("#showmodal")) {
         return;
@@ -17,11 +16,12 @@ SinglePage.LoadModal = function () {
             $.validator.unobtrusive.parse(newForm);
             showModal();
         }).fail(function (error) {
-            alert("خطایی رخ داده، لطفا با مدیر سیستم تماس بگیرید.");
+            alert("Error");
         });
 };
 
 function showModal() {
+
     $("#MainModal").modal("show");
 }
 
@@ -30,7 +30,6 @@ function hideModal() {
 }
 
 $(document).ready(function () {
-   // alert("wsf");
     window.onhashchange = function () {
         SinglePage.LoadModal();
     };
@@ -74,7 +73,7 @@ $(document).ready(function () {
                         CallBackHandler(data, action, form);
                     },
                     error: function (data) {
-                        alert("خطایی رخ داده است. لطفا با مدیر سیستم تماس بگیرید.");
+                        alert("Error");
                     }
                 });
             }
@@ -140,7 +139,7 @@ function checkSlugDuplication(url, dist) {
         url: url + '/' + id,
         success: function (data) {
             if (data) {
-                sendNotification('error', 'top right', "خطا", "اسلاگ نمی تواند تکراری باشد");
+                sendNotification('error', 'top right', "Error", "Slug can't Duplicate ");
             }
         }
     });
@@ -165,7 +164,7 @@ $(document).on("click",
             url = url + "/" + fieldValue;
         }
         if (button.data("request-confirm") == true) {
-            if (confirm("آیا از انجام این عملیات اطمینان دارید؟")) {
+            if (confirm("Are you shure?")) {
                 handleAjaxCall(method, url, data);
             }
         } else {
@@ -182,7 +181,7 @@ function handleAjaxCall(method, url, data) {
             function (data) {
 
             }).fail(function (error) {
-                alert("خطایی رخ داده است. لطفا با مدیر سیستم تماس بگیرید.");
+                alert("Error");
             });
     }
 }

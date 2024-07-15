@@ -1,0 +1,57 @@
+﻿@model InventoryManagement.Application.Contract.Inventory.IncreaseInventory
+
+<div class="modal-dialog">
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel">Increase Inventory</h5>
+
+            <button type="button"
+                    class="sa-close sa-close--modal"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="card">
+                <div class="card-body p-5">
+
+                    <form asp-page="./Index" asp-page-handler="Increase" method="post" class="row g-4"
+                          data-ajax="true" data-callback="" data-action="Refresh">
+
+
+                        <div class="col-md-12">
+
+                            <label asp-for="Count" class="form-label">Count</label>
+                            <input type="text" asp-for="Count" class="form-control" />
+
+                            @* <span asp-validation-for="@Model.CreateProduct.CategoryId" class="alert-sa-danger-card"></span> *@
+                        </div>
+
+                        <div class="col-md-12">
+                            <label asp-for="Description" class="form-label">Description</label>
+                            <textarea asp-for="Description"
+                                      class="form-control mt-3 form-control-sm"
+                                      rows="2"></textarea>
+
+                            @* <span asp-validation-for="Name" class="alert-sa-danger-card"></span> *@
+                        </div>
+
+                        <input type="hidden" asp-for="InventoryId" value="@Model.InventoryId" />
+
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Increase</button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
