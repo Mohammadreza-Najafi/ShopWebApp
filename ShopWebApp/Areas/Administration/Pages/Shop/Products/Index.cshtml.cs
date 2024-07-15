@@ -13,7 +13,6 @@ namespace ShopWebApp.Areas.Administration.Pages.Shop.Products
         //[TempData]
         //public string Message { get; set; }
         //public ProductSearchModel SearchModel { get; set; }
-        //public SelectList ProductCategories;
 
         private readonly IProductApplication _productApplication;
         private readonly IProductCategoryApplication _productCategoryApplication;
@@ -28,30 +27,5 @@ namespace ShopWebApp.Areas.Administration.Pages.Shop.Products
             Products = _productApplication.Search(searchModel);
         }
 
-        public IActionResult OnGetNotInStock(long id)
-        {
-            var result = _productApplication.NotInStock(id);
-
-            if (result.IsSuccedded)
-            {               
-                //Message = result.Message;
-            }
-
-            return RedirectToPage("./Index");
-
-        }
-
-        public IActionResult OnGetIsInStock(long id)
-        {
-            var result = _productApplication.IsStock(id);
-
-            if (result.IsSuccedded)
-            {
-                //Message = result.Message;
-            }
-
-            return RedirectToPage("./Index");
-
-        }
     }
 }
