@@ -1,4 +1,5 @@
 ﻿using _0_Framwork.Application;
+using Microsoft.Identity.Client;
 
 namespace InventoryManagement.Application.Contract.Inventory
 {
@@ -11,6 +12,7 @@ namespace InventoryManagement.Application.Contract.Inventory
         OperationResult Reduce(List<ReduceInventory> command);
         EditInventory GetDetails(long id);
         List<InventoryViewModel> Search(InventorySearchModel searchModel);
+        List<InventoryOperationViewModel> GetOperationLog(long inventoryId);
 
     }
 }

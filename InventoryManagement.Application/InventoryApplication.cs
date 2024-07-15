@@ -35,10 +35,11 @@ namespace InventoryManagement.Application
             if(inventory == null)
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
-            if(_inventoryRepository.Exists(x => x.ProductId == command.ProductId && x.Id == command.Id))
+            if(_inventoryRepository.Exists(x => x.ProductId == command.ProductId && x.Id != command.Id))
                 return operation.Failed(ApplicationMessages.RecordNotFound);
 
             inventory.Edit(command.ProductId, command.UnitPrice);
+            
             _inventoryRepository.SaveChanges();
 
             return operation.Succedded();
@@ -47,6 +48,11 @@ namespace InventoryManagement.Application
         public EditInventory GetDetails(long id)
         {
             return _inventoryRepository.GetDetails(id);
+        }
+
+        public List<InventoryOperationViewModel> GetOperationLog(long inventoryId)
+        {
+            return _inventoryRepository.GetOperationlog(inventoryId);
         }
 
         public OperationResult Increase(IncreaseInventory command)
