@@ -1,0 +1,140 @@
+﻿@model List<_01_ShopQuery.Contracts.ProductCategory.ProductCategoryQueryModel>
+
+<div class="container mt-5">
+ 
+    <div class="furgan-heading style-01">
+        <div class="heading-inner">
+            <h3 class="title">Product Category</h3>
+            <div class="subtitle">
+                Made with care for your little ones, our products are perfect for every
+                occasion. Check it out.
+            </div>
+        </div>
+    </div>
+
+    <div class="furgan-tabs style-01">
+        <div class="tab-head">
+            <ul class="tab-link equal-container " data-loop="1">
+
+                @foreach (var category in Model)
+                {
+                    <li class="@(Model.First() == category ? "active" : " ")">
+                        <a class="loaded"
+                           data-ajax="0"
+                           data-animate=""
+                           data-section="@category.Id"
+                           data-id="330" href="#@category.Id">
+                            <span>@category.Name</span>
+                        </a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+        <div class="tab-container">
+
+            @foreach (var category in Model)
+            {
+                <div class="tab-panel @(Model.First() == category ? "active" : " ")" id="@category.Id">
+                    <div class="furgan-products style-01">
+                        <div class="response-product product-list-grid row auto-clear equal-container better-height ">
+
+                            @foreach (var product in category.Products)
+                            {
+
+                                <div class="product-item recent-product style-01 rows-space-30 col-bg-3 col-xl-3 col-lg-4 col-md-4 col-sm-6 col-ts-6 post-1 product type-product status-publish has-post-thumbnail">
+                                    <div class="product-inner tooltip-left">
+                                        <div class="product-thumb">
+
+                                            <a class="thumb-link"
+                                               href="#">
+                                                <img class="img-responsive"
+                                                     src="~/Theme/assets/images/apro13-1-270x350.jpg"
+                                                     alt="Woody Table" width="270" height="350">
+                                            </a>
+
+                                            @if (product.HasDiscount)
+                                            {
+                                                <div class="flash">
+                                                    <span class="onsale"><span class="number">-@product.DiscountRate%</span></span>
+                                                </div>
+                                            }
+
+                                            <div class="group-button">
+                                                <div class="yith-wcwl-add-to-wishlist">
+                                                    <div class="yith-wcwl-add-button show">
+                                                        <a href="#" class="add_to_wishlist">Add to Wishlist</a>
+                                                    </div>
+                                                </div>
+                                                <div class="furgan product compare-button">
+                                                    <a href="#" class="compare button">Compare</a>
+                                                </div>
+                                                <a href="#" class="button yith-wcqv-button">Quick View</a>
+                                                <div class="add-to-cart">
+                                                    <a href="#"
+                                                       class="button product_type_simple add_to_cart_button ajax_add_to_cart">
+                                                        Add
+                                                        to cart
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="product-info equal-elem">
+                                            <h3 class="product-name product_title">
+                                                <a href="#">@product.Name</a>
+                                            </h3>
+                                            <div class="rating-wapper nostar">
+                                                <div class="star-rating">
+                                                    <span style="width:0%">
+                                                        Rated <strong class="rating">0</strong> out of 5
+                                                    </span>
+                                                </div>
+                                                <span class="review">(0)</span>
+                                            </div>
+
+
+
+                                            <span class="price">
+                                                @if (product.HasDiscount)
+                                                {
+
+                                                    <del>
+                                                        <span class="furgan-Price-amount amount">
+                                                            <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                                        </span>
+                                                    </del>
+                                                    <ins>
+                                                        <span class="furgan-Price-amount amount">
+                                                            <span class="furgan-Price-currencySymbol">$</span>@product.PriceWithDiscount
+                                                        </span>
+                                                    </ins>
+
+                                                }
+                                                else
+                                                {
+                                                    <span class="furgan-Price-amount amount">
+                                                        <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                                    </span>
+                                                }
+
+
+                                            </span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+
+</div>

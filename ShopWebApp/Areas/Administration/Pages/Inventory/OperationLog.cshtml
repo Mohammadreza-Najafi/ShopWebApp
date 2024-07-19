@@ -1,0 +1,61 @@
+﻿@model List<InventoryManagement.Application.Contract.Inventory.InventoryOperationViewModel>
+
+
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content" >
+            <div class="modal-header">
+
+                <h5 class="modal-title" id="exampleModalLabel">Inventory Log</h5>
+
+                <button type="button"
+                        class="sa-close sa-close--modal"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+
+                <div class="card-">
+                    <div class="card-body p-5">
+
+                        <table class="table table-bordered table-striped mb-0 " >
+                            <thead>
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Count</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Current Count</th>
+                                    <th scope="col">Operation</th>
+                                    <th scope="col">Description</th>
+                                </tr>
+                            </thead>
+                            <tbody >
+
+                                @foreach (var item in Model)
+                                {
+                                <tr class=" @(item.Operation ? "btn-success" : "btn-danger")" style="color: rgb(255, 255, 255)">
+                                        <th scope="row">@item.Id</th>
+                                        <td>@item.Count</td>
+                                        <td>@item.OperationDate</td>
+                                        <td>@item.CurrentCount</td>
+                                        <td>@item.Operator</td>
+                                        <td>@item.Description</td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    
+
+
+    

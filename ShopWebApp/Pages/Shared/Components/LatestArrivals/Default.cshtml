@@ -1,0 +1,105 @@
+﻿@model List<_01_ShopQuery.Contracts.Product.ProductQueryModel>
+
+<div class="container mb-5">
+
+    <div class="furgan-heading style-01">
+        <div class="heading-inner">
+            <h3 class="title">
+                Latest Arrivals
+            </h3>
+            <div class="subtitle">
+                Made with care for your little ones, our products are perfect for every occasion. Check it out.
+            </div>
+        </div>
+    </div>
+
+    <div class="furgan-products style-02">
+        <div class="response-product product-list-owl owl-slick equal-container better-height"
+             data-slick="{&quot;arrows&quot;:true,&quot;slidesMargin&quot;:30,&quot;dots&quot;:true,&quot;infinite&quot;:true,&quot;speed&quot;:300,&quot;slidesToShow&quot;:4,&quot;rows&quot;:1}"
+             data-responsive="[{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:768,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1500,&quot;settings&quot;:{&quot;slidesToShow&quot;:4,&quot;slidesMargin&quot;:&quot;30&quot;}}]">
+
+
+            @foreach (var product in Model)
+            {
+                <div class="product-item featured_products style-02 rows-space-30 post-34 product type-product status-publish has-post-thumbnail ">
+                    <div class="product-inner tooltip-top">
+
+                        <div class="product-thumb">
+                            <a class="thumb-link"
+                               href="#" tabindex="0">
+                                <img class="img-responsive"
+                                     src="~/Theme/assets/images/apro61-1-270x350.jpg"
+                                     alt="Sweeper Funnel" width="270" height="350">
+                            </a>
+                            <div class="flash">
+                                @if (product.HasDiscount)
+                                {
+                                    <span class="onsale"><span class="number">-@product.DiscountRate%</span></span>
+                                }
+
+                                <span class="onnew"><span class="text">New</span></span>
+                            </div>
+                            <a href="#" class="button yith-wcqv-button">Quick View</a>
+                        </div>
+
+                        <div class="product-info">
+
+                            <div class="rating-wapper nostar">
+                                <div class="star-rating">
+                                    <span style="width:0%">
+                                        Rated <strong class="rating">0</strong> out of 5
+                                    </span>
+                                </div>
+                                <span class="review">(0)</span>
+                            </div>
+
+                            <h3 class="product-name product_title">
+                                <a href="#"
+                                   tabindex="0">@product.Name</a>
+                            </h3>
+                            <span class="price">
+                                @if (product.HasDiscount)
+                                {
+                                    <del>
+                                        <span class="furgan-Price-amount amount">
+                                            <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                        </span>
+                                    </del>
+                                    <ins>
+                                        <span class="furgan-Price-amount amount">
+                                            <span class="furgan-Price-currencySymbol">$</span>@product.PriceWithDiscount
+                                        </span>
+                                    </ins>
+                                }
+                                else
+                                {
+
+                                    <span class="furgan-Price-amount amount">
+                                        <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                    </span>
+                                }
+                            </span>
+                        </div>
+
+                        <div class="group-button clearfix">
+                            <div class="yith-wcwl-add-to-wishlist">
+                                <div class="yith-wcwl-add-button show">
+                                    <a href="#" class="add_to_wishlist">Add to Wishlist</a>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <a href="#" class="button product_type_grouped">
+                                    View products
+                                </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            }
+
+
+        </div>
+    </div>
+</div>
