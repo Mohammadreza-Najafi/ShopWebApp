@@ -26,4 +26,8 @@
     <ProjectReference Include="..\ShopManagment.Application.Contracts\ShopManagement.Application.Contracts.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="Pages\Shared\Components\Footer\Default.cshtml" />
+  </ItemGroup>
+
 </Project>

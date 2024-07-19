@@ -1,0 +1,180 @@
+﻿@page
+@model ShopWebApp.Pages.SearchModel
+
+<div class="banner-wrapper has_background">
+    <img src="~/Theme/assets/images/banner-for-all2.jpg"
+         class="img-responsive attachment-1920x447 size-1920x447" alt="img">
+    <div class="banner-wrapper-inner">
+        <h1 class="page-title">Search Result For : @Model.Value</h1>
+        <div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+            <ul class="trail-items breadcrumb">
+                @* <li class="trail-item trail-begin"><a asp-page="./Index"><span>Home</span></a></li> *@
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div class="main-container shop-page no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="main-content col-md-12">
+                <div class="shop-control shop-before-control">
+
+                    <form class="furgan-ordering" method="get">
+                        <select title="product_cat" name="orderby" class="orderby">
+                            <option value="menu_order" selected="selected">Default sorting</option>
+                            <option value="popularity">Sort by popularity</option>
+                            <option value="rating">Sort by average rating</option>
+                            <option value="date">Sort by latest</option>
+                            <option value="price">Sort by price: low to high</option>
+                            <option value="price-desc">Sort by price: high to low</option>
+                        </select>
+                    </form>
+                    
+                    @*<form class="per-page-form">
+                        <label>
+                            <select class="option-perpage">
+                                <option value="12" selected="">
+                                    Show 12
+                                </option>
+                                <option value="5">
+                                    Show 05
+                                </option>
+                                <option value="10">
+                                    Show 10
+                                </option>
+                                <option value="12">
+                                    Show 12
+                                </option>
+                                <option value="15">
+                                    Show 15
+                                </option>
+                                <option value="20">
+                                    Show All
+                                </option>
+                            </select>
+                        </label>
+                    </form>*@
+                    
+                </div>
+                
+                
+                <div class="auto-clear equal-container better-height furgan-products">
+                    <ul class="row products columns-3">
+
+                        @foreach (var product in Model.Products)
+                        {
+                            <li class="product-item wow fadeInUp product-item rows-space-30 col-bg-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-ts-6 style-01 post-24 product type-product status-publish has-post-thumbnail"
+                            data-wow-duration="1s" data-wow-delay="0ms" data-wow="fadeInUp">
+                            <div class="product-inner tooltip-left">
+                                <div class="product-thumb">
+                                    
+                                    <a class="thumb-link" href="#">
+                                        <img class="img-responsive"
+                                             src="~/Theme/assets/images/apro161-1-600x778.jpg"
+                                             alt="Moss Sofa" width="600" height="778">
+                                    </a>
+                                    @if (product.HasDiscount)
+                                    {
+                                        <div class="flash">
+                                            <span class="onnew"><span class="text">New</span></span>
+                                        </div>
+                                    }
+                                   
+                                    
+                               
+                                    <div class="group-button">
+                                        <div class="yith-wcwl-add-to-wishlist">
+                                            <div class="yith-wcwl-add-button show">
+                                                <a href="#" class="add_to_wishlist">Add to Wishlist</a>
+                                            </div>
+                                        </div>
+                                        <div class="furgan product compare-button">
+                                            <a href="#" class="compare button">Compare</a>
+                                        </div>
+                                        <a href="#" class="button yith-wcqv-button">Quick View</a>
+                                        <div class="add-to-cart">
+                                            <a href="#" class="button product_type_variable add_to_cart_button">
+                                                Select
+                                                options
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="product-info equal-elem">
+                                    
+                                    <h3 class="product-name product_title">
+                                        <a asp-page="/ProductDetails">@product.Name</a>
+                                    </h3>
+                                    
+                                    <div class="rating-wapper nostar">
+                                        <div class="star-rating">
+                                            <span style="width:0%">
+                                                Rated <strong class="rating">0</strong> out of 5
+                                            </span>
+                                        </div>
+                                        <span class="review">(0)</span>
+                                    </div>
+                                    
+                                    <span class="price">
+                                        
+                                        @if (product.HasDiscount)
+                                        {
+                                            <del>
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                                </span>
+                                            </del>
+                                            <ins>
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>@product.PriceWithDiscount
+                                                </span>
+                                            </ins>
+
+                                        }
+
+                                        <span class="furgan-Price-amount amount">
+                                            <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                        </span>
+
+                                    </span>
+                                    
+                                </div>
+                                
+                                @if (product.HasDiscount)
+                                {
+                                    <div class="countdown-product">
+                                        <div class="furgan-countdown" data-datetime="03/12/2020 12:00:00">
+                                            <span class="days pr-3"><span class="number">00</span>
+                                                <span class="text">Days</span></span>
+                                            <span class="hour pr-3"><span class="number">00</span>
+                                                <span class="text">Hours</span></span>
+                                            <span class="mins pr-3"><span class="number">00</span>
+                                                <span class="text">Mins</span></span>
+                                            <span class="secs"><span class="number">00</span>
+                                                <span class="text">Secs</span></span>
+                                        </div>
+                                    </div>
+                                }
+
+                            </div>
+                        </li>
+
+                        }
+                        
+                    </ul>
+                </div>
+                <div class="shop-control shop-after-control">
+                    <nav class="furgan-pagination">
+                        <span class="page-numbers current">1</span>
+                        <a class="page-numbers" href="#">2</a>
+                        <a class="next page-numbers" href="#">Next</a>
+                    </nav>
+                    <p class="furgan-result-count">Showing 1–12 of 20 results</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

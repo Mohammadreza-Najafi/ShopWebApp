@@ -1,37 +1,51 @@
 ﻿@model List<_01_ShopQuery.Contracts.ProductCategory.ProductCategoryQueryModel>
 
-<div class="section-017">
-    <div class="row">
+<div class="container mt-5">
 
-        @foreach (var item in Model){
+    <div class="furgan-heading style-01">
+        <div class="heading-inner">
+            <h3 class="title">
+                Categories
+            </h3>
+            <div class="subtitle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit erat vehicula ad, mollis viverra
+                vulputate
+            </div>
+        </div>
+    </div>
 
-            <div class="col-md-12 col-lg-4">
-                <div class="furgan-banner style-08 left-center">
-                    <div class="banner-inner">
-                        <figure class="banner-thumb">
-                            <img src="~/Theme/assets/images/banner31.jpg" class="attachment-full size-full" alt="img">
+    <div class="furgan-categories  style-02">
+        <div class="categories-list-owl owl-slick equal-container better-height"
+             data-slick="{&quot;arrows&quot;:true,&quot;slidesMargin&quot;:30,&quot;dots&quot;:false,&quot;infinite&quot;:false,&quot;speed&quot;:300,&quot;slidesToShow&quot;:3,&quot;rows&quot;:1}"
+             data-responsive="[{&quot;breakpoint&quot;:480,&quot;settings&quot;:{&quot;slidesToShow&quot;:2,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:768,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;10&quot;}},{&quot;breakpoint&quot;:992,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1200,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;20&quot;}},{&quot;breakpoint&quot;:1500,&quot;settings&quot;:{&quot;slidesToShow&quot;:3,&quot;slidesMargin&quot;:&quot;30&quot;}}]">
+
+            @foreach (var item in Model)
+            {
+
+                <div class="categories-item rows-space-0 post-740 page type-page status-publish hentry">
+                    <div class="categories-inner">
+                        <figure class="categories-thumb">
+                            <a asp-page="/ProductCategory" tabindex="-1">
+                                <img src="~/Theme/assets/images/cat1.jpg"
+                                     class="img-responsive attachment-370x370 size-370x370" alt="img"
+                                     width="370"
+                                     height="370">
+                            </a>
                         </figure>
-                        <div class="banner-info ">
-                            <div class="banner-content">
-                                <div class="title-wrap">
-                                    <h6 class="title">
-                                        @item.Name
-                                    </h6>
-                                </div>
-                                <div class="cate">
-                                    50% sale off
-                                </div>
-                                <div class="button-wrap">
-                                    <a class="button" asp-page="/ProductCategory" asp-route-id="@item.Slug">
-                                        Shop now
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 class="title">
+                            <a tabindex="-1" asp-page="/ProductCategory" asp-route-id="@item.Slug">
+                                @item.Name
+                            </a>
+                        </h3>
                     </div>
                 </div>
-            </div>
-        }
-       
+            }
+
+        </div>
     </div>
 </div>
+
+
+
+
+
