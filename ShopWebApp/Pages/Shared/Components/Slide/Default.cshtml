@@ -7,9 +7,9 @@
 
          @foreach (var slide in Model){
             <div class="slide-wrap">
-                <img src="~/Theme/assets/images/slide21.jpg" alt="image">
+                <img src="~/ProductPictures/@slide.Picture" alt="@slide.PictureAlt">
                 <div class="slide-info">
-                    <div class="container">
+                    <div class="container"> 
                         <div class="slide-inner">
                             <h5>@slide.Heading</h5>
                             <h1>@slide.Title</h1>
