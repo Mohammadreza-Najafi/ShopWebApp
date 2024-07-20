@@ -22,7 +22,8 @@ namespace ShopWebApp.Areas.Administration.Pages.Shop.ProductCategories
         }
 
         public IActionResult OnPost()
-        {
+        {            
+            
             _productCategoryApplication.Edit(ProductCategory);
 
             return RedirectToPage("./Index");

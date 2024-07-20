@@ -30,4 +30,11 @@
     <AdditionalFiles Include="Pages\Shared\Components\Footer\Default.cshtml" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\ProductPictures\" />
+    <Folder Include="wwwroot\ProductPictures\df\" />
+    <Folder Include="wwwroot\ProductPictures\liva-ie\" />
+    <Folder Include="wwwroot\ProductPictures\لیوان\" />
+  </ItemGroup>
+
 </Project>

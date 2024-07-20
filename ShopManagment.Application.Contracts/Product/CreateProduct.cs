@@ -1,4 +1,5 @@
 ﻿using _0_Framwork.Application;
+using Microsoft.AspNetCore.Http;
 using ShopManagement.Application.Contracts.ProductCategory;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,7 +15,7 @@ namespace ShopManagement.Application.Contracts.Product
         [Required(ErrorMessage = ValidationMessages.IsRequired)]
         public string ShortDescription { get; set; }
         public string Description { get; set; }
-        public string Picture { get; set; }
+        public IFormFile Picture { get; set; }
         public string PictureAlt { get; set; }
         public string PictureTitle { get; set; }
         public long CategoryId { get; set; }

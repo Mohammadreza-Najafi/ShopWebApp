@@ -363,3 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 /.idea
 /ShopWebApp/Properties/launchSettings.json
+/ShopWebApp/wwwroot/Theme/assets/images
+/ShopWebApp/wwwroot/ProductPictures
