@@ -37,6 +37,7 @@ namespace ShopManagement.Domain.ProductAgg
             Slug = slug;
             Keywords = keywords;
             MetaDescription = metaDescription;
+
         }
 
         public void Edit(string name, string code, string shortDescription,

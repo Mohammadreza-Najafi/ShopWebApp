@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{id}"
 @model ShopWebApp.Pages.ProductCategoryModel
 @{
     ViewData["Title"] = "Products Category";
@@ -69,149 +69,159 @@
                         @foreach (var product in Model.ProductCategory.Products)
                         {
                             <li class="product-item wow fadeInUp product-item rows-space-30 col-bg-3 col-xl-3 col-lg-4 col-md-6 col-sm-6 col-ts-6 style-01 post-24 product type-product status-publish has-post-thumbnail"
-                            data-wow-duration="1s" data-wow-delay="0ms" data-wow="fadeInUp">
-                            <div class="product-inner tooltip-left">
-                                <div class="product-thumb">
-                                    
-                                    <a class="thumb-link" href="#">
-                                        <img class="img-responsive"
-                                             src="~/Theme/assets/images/apro161-1-600x778.jpg"
-                                             alt="Moss Sofa" width="600" height="778">
-                                    </a>
-                                    @if (product.HasDiscount)
-                                    {
-                                        <div class="flash">
-                                            <span class="onnew"><span class="text">New</span></span>
-                                        </div>
-                                    }
-                                   
-                                    
-                                    <form class="variations_form cart">
-                                        <table class="variations">
-                                            <tbody>
-                                            <tr>
-                                                <td class="value">
-                                                    <select title="box_style" data-attributetype="box_style"
-                                                            data-id="pa_color"
-                                                            class="attribute-select " name="attribute_pa_color"
-                                                            data-attribute_name="attribute_pa_color"
-                                                            data-show_option_none="yes">
-                                                        <option data-type="" data-pa_color="" value="">
-                                                            Choose an
-                                                            option
-                                                        </option>
-                                                        <option data-width="30" data-height="30" data-type="color"
-                                                                data-pa_color="#3155e2" value="blue"
-                                                                class="attached enabled">
-                                                            Blue
-                                                        </option>
-                                                        <option data-width="30" data-height="30" data-type="color"
-                                                                data-pa_color="#49aa51" value="green"
-                                                                class="attached enabled">
-                                                            Green
-                                                        </option>
-                                                        <option data-width="30" data-height="30" data-type="color"
-                                                                data-pa_color="#ff63cb" value="pink"
-                                                                class="attached enabled">
-                                                            Pink
-                                                        </option>
-                                                    </select>
-                                                    <div class="data-val attribute-pa_color"
-                                                         data-attributetype="box_style">
-                                                        <a class="change-value color"
-                                                           href="#"
-                                                           style="background: #3155e2;"
-                                                           data-value="blue"></a>
-                                                        <a class="change-value color" href="#"
-                                                           style="background: #49aa51;" data-value="green"></a>
-                                                        <a class="change-value color" href="#"
-                                                           style="background: #ff63cb;" data-value="pink"></a>
-                                                    </div>
-                                                    <a class="reset_variations" href="#" style="visibility: hidden;">Clear</a>
-                                                </td>
-                                            </tr>
-                                            </tbody>
-                                        </table>
-                                    </form>
-                                    <div class="group-button">
-                                        <div class="yith-wcwl-add-to-wishlist">
-                                            <div class="yith-wcwl-add-button show">
-                                                <a href="#" class="add_to_wishlist">Add to Wishlist</a>
-                                            </div>
-                                        </div>
-                                        <div class="furgan product compare-button">
-                                            <a href="#" class="compare button">Compare</a>
-                                        </div>
-                                        <a href="#" class="button yith-wcqv-button">Quick View</a>
-                                        <div class="add-to-cart">
-                                            <a href="#" class="button product_type_variable add_to_cart_button">
-                                                Select
-                                                options
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="product-info equal-elem">
-                                    
-                                    <h3 class="product-name product_title">
-                                        <a asp-page="/ProductDetails">@product.Name</a>
-                                    </h3>
-                                    
-                                    <div class="rating-wapper nostar">
-                                        <div class="star-rating">
-                                            <span style="width:0%">
-                                                Rated <strong class="rating">0</strong> out of 5
-                                            </span>
-                                        </div>
-                                        <span class="review">(0)</span>
-                                    </div>
-                                    
-                                    <span class="price">
-                                        
+                                data-wow-duration="1s" data-wow-delay="0ms" data-wow="fadeInUp">
+                                <div class="product-inner tooltip-left">
+                                    <div class="product-thumb">
+
+                                        <a class="thumb-link" asp-page="/Product" asp-route-id="@product.Slug">
+                                            <img class="img-responsive"
+                                                 src="~/Theme/assets/images/apro161-1-600x778.jpg"
+                                                 alt="Moss Sofa" width="600" height="778">
+                                        </a>
+
                                         @if (product.HasDiscount)
                                         {
-                                            <del>
-                                                <span class="furgan-Price-amount amount">
-                                                    <span class="furgan-Price-currencySymbol">$</span>@product.Price
-                                                </span>
-                                            </del>
-                                            <ins>
-                                                <span class="furgan-Price-amount amount">
-                                                    <span class="furgan-Price-currencySymbol">$</span>@product.PriceWithDiscount
-                                                </span>
-                                            </ins>
-
+                                            <div class="flash">
+                                                <span class="onnew"><span class="text">New</span></span>
+                                            </div>
                                         }
 
-                                        <span class="furgan-Price-amount amount">
-                                            <span class="furgan-Price-currencySymbol">$</span>@product.Price
-                                        </span>
 
-                                    </span>
-                                    
-                                </div>
-                                
-                                @if (product.HasDiscount)
-                                {
-                                    <div class="countdown-product">
-                                        <div class="furgan-countdown" data-datetime="03/12/2020 12:00:00">
-                                            <span class="days"><span class="number">00</span>
-                                                <span class="text">Days</span></span>
-                                            <span class="hour"><span class="number">00</span>
-                                                <span class="text">Hours</span></span>
-                                            <span class="mins"><span class="number">00</span>
-                                                <span class="text">Mins</span></span>
-                                            <span class="secs"><span class="number">00</span>
-                                                <span class="text">Secs</span></span>
+                                        <form class="variations_form cart">
+                                            <table class="variations">
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="value">
+                                                            <select title="box_style" data-attributetype="box_style"
+                                                                    data-id="pa_color"
+                                                                    class="attribute-select " name="attribute_pa_color"
+                                                                    data-attribute_name="attribute_pa_color"
+                                                                    data-show_option_none="yes">
+                                                                <option data-type="" data-pa_color="" value="">
+                                                                    Choose an
+                                                                    option
+                                                                </option>
+                                                                <option data-width="30" data-height="30" data-type="color"
+                                                                        data-pa_color="#3155e2" value="blue"
+                                                                        class="attached enabled">
+                                                                    Blue
+                                                                </option>
+                                                                <option data-width="30" data-height="30" data-type="color"
+                                                                        data-pa_color="#49aa51" value="green"
+                                                                        class="attached enabled">
+                                                                    Green
+                                                                </option>
+                                                                <option data-width="30" data-height="30" data-type="color"
+                                                                        data-pa_color="#ff63cb" value="pink"
+                                                                        class="attached enabled">
+                                                                    Pink
+                                                                </option>
+                                                            </select>
+                                                            <div class="data-val attribute-pa_color"
+                                                                 data-attributetype="box_style">
+                                                                <a class="change-value color"
+                                                                   href="#"
+                                                                   style="background: #3155e2;"
+                                                                   data-value="blue"></a>
+                                                                <a class="change-value color" href="#"
+                                                                   style="background: #49aa51;" data-value="green"></a>
+                                                                <a class="change-value color" href="#"
+                                                                   style="background: #ff63cb;" data-value="pink"></a>
+                                                            </div>
+                                                            <a class="reset_variations" href="#" style="visibility: hidden;">Clear</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </form>
+                                        <div class="group-button">
+                                            <div class="yith-wcwl-add-to-wishlist">
+                                                <div class="yith-wcwl-add-button show">
+                                                    <a href="#" class="add_to_wishlist">Add to Wishlist</a>
+                                                </div>
+                                            </div>
+                                            <div class="furgan product compare-button">
+                                                <a href="#" class="compare button">Compare</a>
+                                            </div>
+                                            <a href="#" class="button yith-wcqv-button">Quick View</a>
+                                            <div class="add-to-cart">
+                                                <a href="#" class="button product_type_variable add_to_cart_button">
+                                                    Select
+                                                    options
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                }
 
-                            </div>
-                        </li>
+                                    <div class="product-info equal-elem">
+
+                                        <h3 class="product-name product_title">
+                                            <a asp-page="/Product" asp-route-id="@product.Slug">@product.Name</a>
+                                        </h3>
+
+                                        <div class="rating-wapper nostar">
+                                            <div class="star-rating">
+                                                <span style="width:0%">
+                                                    Rated <strong class="rating">0</strong> out of 5
+                                                </span>
+                                            </div>
+                                            <span class="review">(0)</span>
+                                        </div>
+
+                                        <span class="price">
+
+                                            @if (product.HasDiscount)
+                                            {
+                                                <del>
+                                                    <span class="furgan-Price-amount amount">
+                                                        <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                                    </span>
+                                                </del>
+                                                <ins>
+                                                    <span class="furgan-Price-amount amount">
+                                                        <span class="furgan-Price-currencySymbol">$</span>@product.PriceWithDiscount
+                                                    </span>
+                                                </ins>
+
+                                            }
+
+                                            <span class="furgan-Price-amount amount">
+                                                <span class="furgan-Price-currencySymbol">$</span>@product.Price
+                                            </span>
+
+                                        </span>
+
+                                    </div>
+
+                                    @if (product.HasDiscount)
+                                    {
+                                        <div class="countdown-product">
+                                            <div class="furgan-countdown" data-datetime="03/12/2020 12:00:00">
+                                                <span class="days">
+                                                    <span class="number">00</span>
+                                                    <span class="text">Days</span>
+                                                </span>
+                                                <span class="hour">
+                                                    <span class="number">00</span>
+                                                    <span class="text">Hours</span>
+                                                </span>
+                                                <span class="mins">
+                                                    <span class="number">00</span>
+                                                    <span class="text">Mins</span>
+                                                </span>
+                                                <span class="secs">
+                                                    <span class="number">00</span>
+                                                    <span class="text">Secs</span>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </li>
 
                         }
-                        
+
                     </ul>
                 </div>
                 <div class="shop-control shop-after-control">
