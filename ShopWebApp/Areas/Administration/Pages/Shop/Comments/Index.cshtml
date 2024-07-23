@@ -1,0 +1,89 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Shop.Comments.IndexModel
+@{
+    ViewData["title"] = "Comment Management";
+}
+
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Slides</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">@ViewData["title"]</h1>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Message</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var Comment in Model.Comments)
+                {
+                    <tr>
+                        <td>@Comment.Id</td>                      
+                        <td>@Comment.Name</td>
+                        <td>@Comment.Email</td>
+                        <td>@Comment.Message</td>
+                        <td>@Comment.CommentDate</td>
+
+                        <td class="text-center">
+
+                            @if (Comment.IsCanceled)
+                            {
+                                <i class="fa fa-check fa-3x text-danger">Canceled</i>
+                            }
+                            @if (!Comment.IsConfirmed)
+                            {
+                                <i class="fa fa-remove fa-3x text-warning">Wait Confirm</i>
+                            }
+                            @if (Comment.IsConfirmed)
+                            {
+                                <i class="fa fa-remove fa-3x text-success">Confirmed</i>
+                            }
+                        </td>   
+
+                        <td>
+                           
+                            <a asp-page="./Index" asp-page-handler="Cancel" asp-route-id="@Comment.Id"
+                               class="btn btn-danger">Cancel</a>
+
+                            @if (!Comment.IsConfirmed)
+                            {
+                                <a asp-page="./Index" asp-page-handler="Confirm" asp-route-id="@Comment.Id"
+                                   class="btn btn-success">Confirm</a>
+                            }                            
+
+                        </td>
+
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
