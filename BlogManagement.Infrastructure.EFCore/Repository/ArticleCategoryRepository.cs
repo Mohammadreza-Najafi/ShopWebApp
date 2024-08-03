@@ -31,6 +31,12 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 
         }
 
+        public string GetSlugBy(long id)
+        {
+            return _context.ArticleCategories.Select(x => new { x.Id, x.Slug })
+                .FirstOrDefault(x => x.Id == id).Slug;
+        }
+
         public List<ArticleCategoryViewModel> Search(ArticleCategorySearchModel searchModel)
         {
             var query = _context.ArticleCategories.Select(x => new ArticleCategoryViewModel
