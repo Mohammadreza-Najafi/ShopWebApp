@@ -1,0 +1,91 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Blog.ArticleCategories.EditModel
+
+<div class="container container--max--xl">
+
+    <div class="card">
+        <div class="card-body p-5">
+
+            <div class="mb-5">
+                <h2 class="mb-0 fs-exact-18">Edit Category : @Model.ArticleCategory.Name</h2>
+            </div>
+
+            <form asp-page="./Edit"  method="post" enctype="multipart/form-data" class="row g-4">
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.ArticleCategory.Name" class="form-label">Name</label>
+                    <input type="text" asp-for="@Model.ArticleCategory.Name" class="form-control" />
+
+                    <span asp-validation-for="@Model.ArticleCategory.Name" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.ArticleCategory.Slug" class="form-label">Slug</label>
+                    <input type="text" asp-for="@Model.ArticleCategory.Slug" class="form-control" />
+
+                    <span asp-validation-for="@Model.ArticleCategory.Slug" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="@Model.ArticleCategory.Picture" class="form-label">Picture</label>
+                    <input type="file" asp-for="@Model.ArticleCategory.Picture" class="form-control" accept="image/*" />
+
+                    <span asp-validation-for="@Model.ArticleCategory.Picture" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.ArticleCategory.ShowOrder" class="form-label">Show Order</label>
+                    <input asp-for="@Model.ArticleCategory.ShowOrder" class="form-control" />
+
+                    <span asp-validation-for="@Model.ArticleCategory.ShowOrder" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.ArticleCategory.PictureAlt" class="form-label">Alt</label>
+                    <input type="text" asp-for="@Model.ArticleCategory.PictureAlt" class="form-control" />
+
+                    <span asp-validation-for="@Model.ArticleCategory.PictureAlt" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="@Model.ArticleCategory.PictureTitle" class="form-label">Title</label>
+                    <input type="text" asp-for="@Model.ArticleCategory.PictureTitle" class="form-control" />
+
+                    <span asp-validation-for="@Model.ArticleCategory.PictureTitle" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="@Model.ArticleCategory.Description" class="form-label">Description</label>
+                    <textarea class="form-control" asp-for="@Model.ArticleCategory.Description" rows="4"></textarea>
+
+                    <span asp-validation-for="@Model.ArticleCategory.Description" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="@Model.ArticleCategory.Keywords" class="form-label">Keywords</label>
+                    <input type="text" asp-for="@Model.ArticleCategory.Keywords" class="form-control" />
+
+                    <span asp-validation-for="@Model.ArticleCategory.Keywords" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="@Model.ArticleCategory.MetaDescription" class="form-label">Meta Description</label>
+                    <textarea class="form-control" asp-for="@Model.ArticleCategory.MetaDescription" rows="4"></textarea>
+
+                    <span asp-validation-for="@Model.ArticleCategory.MetaDescription" class="error alert-sa-danger-card"></span>
+                </div>
+
+                <input type="hidden" asp-for="@Model.ArticleCategory.Id" value="@Model.ArticleCategory.Id" />
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>
+ 
