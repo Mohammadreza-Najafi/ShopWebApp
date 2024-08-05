@@ -76,6 +76,14 @@
                     <span asp-validation-for="@Model.ArticleCategory.MetaDescription" class="error alert-sa-danger-card"></span>
                 </div>
 
+                <div class="col-md-12">
+                    <label asp-for="ArticleCategory.CanonicalAddress" class="form-label">Canonical Address</label>
+                    <input type="text" asp-for="ArticleCategory.CanonicalAddress" class="form-control" />
+
+                    <span asp-validation-for="ArticleCategory.CanonicalAddress" class="alert-sa-danger-card"></span>
+                </div>
+
+
                 <div class="col-12">
                     <button type="submit" class="btn btn-primary">Create</button>
                 </div>

@@ -1,0 +1,106 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Blog.Articles.CreateModel
+
+
+<div class="container container--max--xl">
+
+    <div class="card">
+        <div class="card-body p-5">
+
+            <div class="mb-5">
+                <h2 class="mb-0 fs-exact-18">Create New </h2>
+            </div>
+
+            <form asp-page="./Create" method="post" enctype="multipart/form-data" class="row g-4">
+
+                <div class="col-md-6">
+                    <label asp-for="Article.Title" class="form-label">Title</label>
+                    <input type="text" asp-for="Article.Title" class="form-control" />
+
+                    <span asp-validation-for="Article.Title" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Article.Slug" class="form-label">Slug</label>
+                    <input type="text" asp-for="Article.Slug" class="form-control" />
+
+                    <span asp-validation-for="Article.Slug" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Article.Picture" class="form-label">Picture</label>
+                    <input type="file" asp-for="Article.Picture" class="form-control" accept="image/*" />
+
+                    <span asp-validation-for="Article.Picture" class="alert-sa-danger-card"></span>
+                 </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Article.CategoryId" class="form-label">Show Order</label>
+                    <select class="form-control" asp-for="Article.CategoryId" asp-items='new SelectList(Model.ArticleCategories,"Id","Name")'>
+                        <option value="0">Choose Category ...</option>
+                    </select>
+                
+
+                    <span asp-validation-for="Article.CategoryId" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Article.PictureAlt" class="form-label">Alt</label>
+                    <input type="text" asp-for="Article.PictureAlt" class="form-control" />
+
+                    <span asp-validation-for="Article.PictureAlt" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Article.PictureTitle" class="form-label">Title</label>
+                    <input type="text" asp-for="Article.PictureTitle" class="form-control" />
+
+                    <span asp-validation-for="Article.PictureTitle" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="Article.ShortDescription" class="form-label">Short Description</label>
+                    <textarea class="form-control" asp-for="Article.ShortDescription" rows="4" onchange="fillField('ShortDescription','MetaDescription')"></textarea>
+
+                    <span asp-validation-for="Article.ShortDescription" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="Article.Description" class="form-label">Description</label>
+                    <textarea class="form-control" asp-for="Article.Description" rows="4"></textarea>
+
+                    <span asp-validation-for="Article.Description" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="Article.Keywords" class="form-label">Keywords</label>
+                    <input type="text" asp-for="Article.Keywords" class="form-control" />
+
+                    <span asp-validation-for="Article.Keywords" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="Article.MetaDescription" class="form-label">Meta Description</label>
+                    <textarea class="form-control" asp-for="Article.MetaDescription" rows="4"></textarea>
+
+                    <span asp-validation-for="Article.MetaDescription" class="error alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-12">
+                    <label asp-for="Article.CanonicalAddress" class="form-label">Canonical Address</label>
+                    <input type="text" asp-for="Article.CanonicalAddress" class="form-control" />
+
+                    <span asp-validation-for="Article.CanonicalAddress" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>

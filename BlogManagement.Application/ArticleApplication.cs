@@ -21,6 +21,7 @@ namespace BlogManagement.Application
         public OperationResult Create(CreateArticle command)
         {
             var operation = new OperationResult();
+
             if (_articleRepository.Exists(x => x.Title == command.Title))
             {
                 return operation.Failed(ApplicationMessages.DuplicatedRecord);

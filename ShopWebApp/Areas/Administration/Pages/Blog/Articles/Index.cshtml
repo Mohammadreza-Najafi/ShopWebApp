@@ -1,0 +1,72 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Blog.Articles.IndexModel
+@{
+    ViewData["title"] = "Manage Article";
+}
+
+<!-- sa-app__body -->
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">Articles</h1>
+            </div>
+
+            <div class="col-auto d-flex"><a asp-page="./Create" class="btn btn-primary">New article</a></div>
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Picture</th>
+                    <th>Title</th>
+                    <th>Category</th>
+                    <th>Short Description</th>
+                    <th>Publish Date</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Articles)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <img src="~/ProductPictures/@item.Picture" style="width: 70px; height: 70px" />
+                        </td>
+                        <td>@item.Title</td>
+                        <td>@item.Category</td>
+                        <td>@item.ShortDescription</td>
+                        <td>@item.PublishDate</td>
+                        <td>
+                            <a class="btn btn-warning pull-right m-rl-5"
+                               href="@Url.Page("./Edit", new { id = item.Id})">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>
+
+<!-- sa-app__body / end -->

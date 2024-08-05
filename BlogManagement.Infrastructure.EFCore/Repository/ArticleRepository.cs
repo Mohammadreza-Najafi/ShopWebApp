@@ -44,7 +44,7 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 Id =x.Id,
                 Category = x.Category.Name,
                 Picture = x.Picture,
-                PublishDate = x.PublishDate.ToString(),
+                PublishDate = x.CreationDate.ToString(),
                 ShortDescription = x.ShortDescription,
                 Title = x.Title
             });
