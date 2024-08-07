@@ -13,18 +13,30 @@
 
             <form asp-page="./Create" method="post" enctype="multipart/form-data" class="row g-4">
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label asp-for="Article.Title" class="form-label">Title</label>
                     <input type="text" asp-for="Article.Title" class="form-control" />
 
                     <span asp-validation-for="Article.Title" class="alert-sa-danger-card"></span>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <label asp-for="Article.Slug" class="form-label">Slug</label>
                     <input type="text" asp-for="Article.Slug" class="form-control" />
 
                     <span asp-validation-for="Article.Slug" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-4">
+                    <label asp-for="Article.PublishDate" class="form-label">Start Date</label>
+                    <input type="text"
+                           class="form-control datepicker-here"
+                           data-auto-close="true"
+                           data-language="en"
+                           aria-label="Datepicker"
+                           asp-for="Article.PublishDate" class="form-control" />
+
+                    @* <span asp-validation-for="Code" class="alert-sa-danger-card"></span> *@
                 </div>
 
                 <div class="col-md-6">
@@ -60,17 +72,20 @@
 
                 <div class="col-md-12">
                     <label asp-for="Article.ShortDescription" class="form-label">Short Description</label>
-                    <textarea class="form-control" asp-for="Article.ShortDescription" rows="4" onchange="fillField('ShortDescription','MetaDescription')"></textarea>
+                    <textarea class="form-control" asp-for="Article.ShortDescription"  rows="4" ></textarea>
 
                     <span asp-validation-for="Article.ShortDescription" class="alert-sa-danger-card"></span>
                 </div>
-
+               
                 <div class="col-md-12">
-                    <label asp-for="Article.Description" class="form-label">Description</label>
-                    <textarea class="form-control" asp-for="Article.Description" rows="4"></textarea>
+                    <label for="textariaTinymce" class="form-label">Description</label>
+                    <textarea class="form-control" asp-for="Article.Description" id="textariaTinymce" rows="4">
+
+                    </textarea>
 
                     <span asp-validation-for="Article.Description" class="alert-sa-danger-card"></span>
                 </div>
+
 
                 <div class="col-md-12">
                     <label asp-for="Article.Keywords" class="form-label">Keywords</label>

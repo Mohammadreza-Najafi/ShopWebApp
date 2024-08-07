@@ -45,7 +45,7 @@ namespace BlogManagement.Infrastructure.EFCore.Repository
                 Category = x.Category.Name,
                 Picture = x.Picture,
                 PublishDate = x.CreationDate.ToString(),
-                ShortDescription = x.ShortDescription,
+                ShortDescription = x.ShortDescription.Substring(0,Math.Min(x.ShortDescription.Length,50)) + "...",
                 Title = x.Title
             });
 
