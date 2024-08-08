@@ -1,10 +1,10 @@
 using _0_Framwork.Application;
 using BlogManagement.Infrastructure.Configuration;
+using CommentManagement.Configuration;
 using DiscountManagement.Configuration;
 using InventoryManagement.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
 using ShopManagement.Configuration;
-using ShopManagement.Infrastructure.EFCore;
 using ShopWebApp;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -17,6 +17,7 @@ ShopManagementBootstrapper.Configure(builder.Services, connectionString);
 DiscountManagementBootstrapper.Configure(builder.Services, connectionString);
 InventoryManagementBootstrapper.Configure(builder.Services, connectionString);
 BlogManagementBootstrapper.Configure(builder.Services, connectionString);
+CommentManagementBootstrapper.Configure(builder.Services, connectionString);
 
 builder.Services.AddTransient<IFileUploader,FileUploader>();
 

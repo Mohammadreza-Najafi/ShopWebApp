@@ -18,7 +18,19 @@
     <link rel="stylesheet" type="text/css" href="~/Theme/assets/css/megamenu.css" />
     <link rel="stylesheet" type="text/css" href="~/Theme/assets/css/dreaming-attribute.css" />
     <link rel="stylesheet" type="text/css" href="~/Theme/assets/css/style.css" />
-    <title>Shop</title>
+
+    @if(ViewData["Title"] != null)
+    {
+        <title>@ViewData["Title"] - Shop</title>
+    }
+    else
+    {
+        <title>Shop</title>
+    }
+    
+    <meta name="keywords" content="@ViewData["keywords"]" />
+    <meta name="description" content="@ViewData["metaDescription"]" />
+
 </head>
 <body>
 

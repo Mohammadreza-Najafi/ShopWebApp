@@ -1,7 +1,9 @@
 ﻿@page "{id}"
 @model ShopWebApp.Pages.ArticleModel
 @{
-
+    ViewData["Title"] = Model.Article.Title;
+    ViewData["keywords"] = Model.Article.Keywords;
+    ViewData["metaDescription"] = Model.Article.MetaDescription;
 }
 
 @* <div class="banner-wrapper no_background">
@@ -71,25 +73,26 @@
                                 </div>
                             </figure>
                         </div>
-                    </div> 
-
-                    <div class="tags">
-                        @foreach(var tag in Model.Article.Tags){
-
-                            <a asp-page="/Search" asp-route-value="@tag" rel="tag">@tag</a>
-                        }               
                     </div>
 
-                    <div class="post-footer">          
-                        
+                    <div class="tags">
+                        @foreach (var tag in Model.Article.Tags)
+                        {
+
+                            <a asp-page="/Search" asp-route-value="@tag" rel="tag">@tag</a>
+                        }
+                    </div>
+
+                    <div class="post-footer">
+
                         <div class="categories">
                             <span>Categories: </span>
 
-                            @foreach(var category in Model.ArticleCategories)
+                            @foreach (var category in Model.ArticleCategories)
                             {
                                 <a asp-page="/ArticleCategory" asp-route-id="@category.Slug">@category.Name</a>
                             }
-                                           
+
                         </div>
 
                     </div>
@@ -97,32 +100,133 @@
                 </article>
 
                 <div id="comments" class="comments-area">
-                    <div id="respond" class="comment-respond">
-                        <h3 id="reply-title" class="comment-reply-title">Leave a comment</h3>
-                        <form id="commentform" class="comment-form">
-                            <p class="comment-notes">
-                                <span id="email-notes">Your email adchair will not be published.</span> Required fields
-                                are marked <span class="required">*</span>
-                            </p>
-                            <p class="comment-reply-content">
-                                <input name="author" id="name" class="input-form name"
-                                       placeholder="Name*" type="text">
-                            </p>
-                            <p class="comment-reply-content">
-                                <input name="email" id="email" class="input-form email"
-                                       placeholder="Email*" type="text">
-                            </p>
-                            <p class="comment-form-comment">
-                                <textarea class="input-form" id="comment" name="comment"
-                                          cols="45" rows="6" aria-required="true"
-                                          placeholder="Enter you comment here..."></textarea>
-                            </p><input name="wpml_language_code" value="en" type="hidden">
-                            <p class="form-submit">
-                                <input name="submit" id="submit" class="submit"
-                                       value="Post a comment" type="submit">
-                            </p>
-                        </form>
-                    </div><!-- #respond -->
+
+                    <div id="reviews" class="furgan-Reviews">
+                        <h2 class="furgan-Reviews-title">Reviews</h2>
+
+                        <div id="comments">
+                            @if (Model.Article.Comments.Count > 0)
+                            {
+                                @foreach (var comment in Model.Article.Comments)
+                                {
+                                    <div class="comment" id="comment-@comment.Id">
+
+                                        <div class="comment-author">
+                                            @comment.Name :
+                                        </div>
+
+                                        @if (comment.ParentId > 0)
+                                        {
+                                            <p>
+                                                <span> For Answer To : </span><a href="comment-@comment.ParentId">@comment.ParentName</a>
+
+                                            </p>
+                                           
+                                        }
+
+                                        <div class="comment-text">
+                                            <p>
+                                                @comment.Message
+                                            </p>
+                                        </div>
+                                        <span>
+                                           <a href="#commentform" onclick='$("#commentParentId").val(@comment.Id)'>Reply</a>
+                                        </span>
+
+                                       
+                                    </div>
+                                }
+                            }
+                            else
+                            {
+
+                                <div id="respond" class="comment-respond">
+                                    <span id="reply-title" class="comment-reply-title">Be the first to review.</span>
+                                </div>
+                            }
+
+                        </div>
+
+                        <div id="review_form_wrapper">
+                            <div id="review_form">
+                                <form id="commentform" class="comment-form" method="post">
+
+                                    <p class="comment-notes">
+                                        <span id="email-notes">Your email adchair will not be published.</span>
+                                        Required fields are marked <span class="required">*</span>
+                                    </p>
+
+                                    <p class="comment-form-author">
+                                        <label for="author">
+                                            Name&nbsp;<span class="required">*</span>
+                                        </label>
+                                        <input id="author" name="name" value="" size="30" required="" type="text">
+                                    </p>
+
+                                    <p class="comment-form-email">
+                                        <label for="email">
+                                            Email&nbsp;
+                                            <span class="required">*</span>
+                                        </label>
+                                        <input id="email" name="email" value="" size="30" required="" type="text">
+                                    </p>
+
+                                    <p class="comment-form-comment">
+                                        <label for="comment">
+                                            Your
+                                            review&nbsp;<span class="required">*</span>
+                                        </label>
+                                        <textarea id="comment" name="message" cols="45" rows="8" required=""></textarea>
+                                    </p>
+
+                                    <input type="hidden" name="ownerRecordId" value="@Model.Article.Id" />
+                                    <input type="hidden" name="articleSlug" value="@Model.Article.Slug" />
+                                    <input type="hidden" name="parentId" id="commentParentId" value="" />
+
+                                    <p class="form-submit">
+                                        <input name="submit" id="submit" class="submit" value="Submit" type="submit">
+                                    </p>
+
+                                </form>
+
+                            </div><!-- #respond -->
+                        </div>
+
+
+
+                    </div>
+
+                    @*  <div id="respond" class="comment-respond">
+                    <h3 id="reply-title" class="comment-reply-title">Leave a comment</h3>
+                    <form id="commentform" class="comment-form">
+                    <p class="comment-notes">
+                    <span id="email-notes">Your email adchair will not be published.</span> Required fields
+                    are marked <span class="required">*</span>
+                    </p>
+                    <p class="comment-reply-content">
+                    <input name="author" id="name" class="input-form name"
+                    placeholder="Name*" type="text">
+                    </p>
+                    <p class="comment-reply-content">
+                    <input name="email" id="email" class="input-form email"
+                    placeholder="Email*" type="text">
+                    </p>
+                    <p class="comment-form-comment">
+                    <textarea class="input-form" id="comment" name="comment"
+                    cols="45" rows="6" aria-required="true"
+                    placeholder="Enter you comment here..."></textarea>
+                    </p><input name="wpml_language_code" value="en" type="hidden">
+                    <p class="form-submit">
+                    <input name="submit" id="submit" class="submit"
+                    value="Post a comment" type="submit">
+                    </p>
+                    </form>
+
+                    </div><!-- #respond --> *@
+
+
+
+
                 </div><!-- #comments -->
 
             </div>

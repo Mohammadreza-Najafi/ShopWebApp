@@ -1,7 +1,9 @@
 ﻿@page "{id}"
 @model ShopWebApp.Pages.ProductModel
 @{
-    ViewData["Title"] = "Product Page";
+    ViewData["Title"] = Model.Product.Name;
+    ViewData["keywords"] = Model.Product.Keywords;
+    ViewData["metaDescription"] = Model.Product.MetaDescription;
 }
 
 <div class="single-thumb-vertical main-container shop-page no-sidebar mt-6">
@@ -294,7 +296,7 @@
                                                 </label>
                                                 <textarea id="comment" name="message" cols="45" rows="8" required=""></textarea>
                                             </p>
-                                            <input type="hidden" name="productId" value="@Model.Product.Id" />
+                                            <input type="hidden" name="ownerRecordId" value="@Model.Product.Id" />
                                             <input type="hidden" name="productSlug" value="@Model.Product.Slug" />
 
                                             <p class="form-submit">
