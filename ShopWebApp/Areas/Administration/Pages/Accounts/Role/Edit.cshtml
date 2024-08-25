@@ -1,0 +1,47 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Accounts.Role.EditModel
+@{
+}
+
+<div class="container container--max--xl">
+
+    <div class="card">
+        <div class="card-body p-5">
+
+            <div class="mb-5">
+                <h2 class="mb-0 fs-exact-18">Edit Role : @Model.Command.Name</h2>
+            </div>
+
+            <form method="post" class="row g-4">
+
+                <div class="col-md-6">
+                    <label asp-for="Command.Name" class="form-label">Name</label>
+                    <input type="text" asp-for="Command.Name" class="form-control" />
+
+                    <span asp-validation-for="Command.Name" class="alert-sa-danger-card"></span>
+                </div>
+
+                <div class="col-md-6">
+                    <label asp-for="Command.Name" class="form-label">Select Permissions</label>
+
+                    <select asp-for="Command.Permissions" asp-items="Model.Permissions" class="sa-select2 form-select" multiple="">
+
+                    </select>
+
+                    <span asp-validation-for="Command.Name" class="alert-sa-danger-card"></span>
+                </div>
+
+                <input type="hidden" asp-for="Command.Id" value="@Model.Command.Id" />
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>

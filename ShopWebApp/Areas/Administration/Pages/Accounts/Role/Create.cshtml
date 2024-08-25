@@ -1,0 +1,35 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Accounts.Role.CreateModel
+@{
+}
+
+<div class="container container--max--xl">
+
+    <div class="card">
+        <div class="card-body p-5">
+
+            <div class="mb-5">
+                <h2 class="mb-0 fs-exact-18">Create New Role</h2>
+            </div>
+
+            <form  method="post" enctype="multipart/form-data" class="row g-4">
+
+                <div class="col-md-6">
+                    <label asp-for="Command.Name" class="form-label">Name</label>
+                    <input type="text" asp-for="Command.Name" class="form-control" />
+
+                    <span asp-validation-for="Command.Name" class="alert-sa-danger-card"></span>
+                </div>                
+
+                <div class="col-12">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+
+            </form>
+
+        </div>
+
+
+    </div>
+
+</div>

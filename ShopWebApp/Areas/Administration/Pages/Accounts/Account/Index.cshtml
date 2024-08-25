@@ -1,0 +1,73 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Accounts.Account.IndexModel
+@{
+
+}
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Categories</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">Accounts</h1>
+            </div>
+
+            <div class="col-auto d-flex"><a href='#showmodal=@Url.Page("./Index", "Create")' class="btn btn-primary">Create New User</a></div>
+
+        </div>
+    </div>
+
+    <div class="card">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Picture</th>
+                    <th>Name</th>
+                    <th>User Name</th>
+                    <th>Phone Number</th>
+                    <th>Role</th>
+                    <th>Creation Date</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Accounts)
+                {
+                    <tr>
+                        <td>@item.Id</td>
+                        <td>
+                            <img src="~/ProductPictures/@item.ProfilePhoto" style="width: 70px; height: 70px" />
+                        </td>
+                        <td>@item.Fullname</td>
+                        <td>@item.Username</td>
+                        <td>@item.Mobile</td>
+                        <td>@item.Role</td>
+                        <td>@item.CreationDate</td>
+                        <td>
+                            <a class="btn btn-warning pull-right m-rl-5"
+                               href="@Url.Page("./Edit", new { id = item.Id})">
+                                <i class="fa fa-edit"></i> Edit
+                            </a>
+                            <a class="btn btn-primary waves-effect waves-light m-b-5"
+                               href="@Url.Page("./Index", "ChangePassword", new { id = item.Id})">
+                                <i class="fa fa-key"></i> ChangePassword
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,140 @@
+﻿@page
+@model ShopWebApp.Pages.AccountModel
+@{
+}
+
+<div class="banner-wrapper has_background">
+    <img src="~/Theme/assets/images/banner-for-all2.jpg"
+         class="img-responsive attachment-1920x447 size-1920x447" alt="img">
+    <div class="banner-wrapper-inner">
+        <h1 class="page-title">My Account</h1>
+        <div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+            <ul class="trail-items breadcrumb">
+                <li class="trail-item trail-begin"><a href="index-2.html"><span>Home</span></a></li>
+                <li class="trail-item trail-end active">
+                    <span>My Account</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<main class="site-main  main-container no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="main-content col-md-12">
+                <div class="page-main-content">
+                    <div class="furgan">
+                        <div class="furgan-notices-wrapper"></div>
+                        <div class="u-columns col2-set" id="customer_login">
+
+
+                            <div class="u-column1 col-1">
+                                <h2>Login</h2>
+                                <form class="furgan-form furgan-form-login login" method="post" asp-page-handler="Login">
+
+                                    <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+                                        <label for="username">
+                                            Username or email adchair&nbsp;<span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="furgan-Input furgan-Input--text input-text"
+                                               name="username" id="username" autocomplete="username" value="">
+                                    </p>
+
+                                    <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+                                        <label for="password">Password&nbsp;<span class="required">*</span></label>
+                                        <input class="furgan-Input furgan-Input--text input-text"
+                                               type="password" name="password" id="password"
+                                               autocomplete="current-password">
+                                    </p>
+
+                                    <p class="form-row">
+                                        <input type="hidden" id="furgan-login-nonce" name="furgan-login-nonce"
+                                               value="832993cb93"><input type="hidden" name="_wp_http_referer"
+                                                                         value="/furgan/my-account/">
+                                        <button type="submit" class="furgan-Button button" name="login"
+                                                value="Log in">
+                                            Log in
+                                        </button>
+
+                                        <label class="furgan-form__label furgan-form__label-for-checkbox inline">
+                                            <input class="furgan-form__input furgan-form__input-checkbox"
+                                                   name="rememberme" type="checkbox" id="rememberme" value="forever">
+                                            <span>Remember me</span>
+                                        </label>
+                                    </p>
+
+
+
+                                </form>
+                            </div>
+
+
+                            <div class="u-column2 col-2">
+                                <h2>Register</h2>
+                                <form method="post" class="furgan-form furgan-form-register register" asp-page-handler="Register">
+
+                                    <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+                                        <label for="username">
+                                            Full Name &nbsp;<span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="furgan-Input furgan-Input--text input-text"
+                                               name="fullname" id="username" autocomplete="username" value="">
+                                    </p>
+
+                                    <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+                                        <label for="username">
+                                            Email &nbsp;<span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="furgan-Input furgan-Input--text input-text"
+                                               name="username" id="username" autocomplete="username" value="">
+                                    </p>
+
+                                    <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+                                        <label for="reg_email">
+                                            Phone Number &nbsp;<span class="required">*</span>
+                                        </label>
+                                        <input type="text" class="furgan-Input furgan-Input--text input-text"
+                                               name="mobile" id="reg_email" autocomplete="email" value="">
+                                    </p>
+
+                                    <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+
+                                        <label for="username">
+                                            Password &nbsp;<span class="required">*</span>
+                                        </label>
+
+                                        <input type="password" class="furgan-Input furgan-Input--text input-text"
+                                               name="password" id="username" autocomplete="username" value="">
+                                    </p>
+
+                                    <p class="furgan-form-row furgan-form-row--wide form-row form-row-wide">
+
+                                        <label for="username">
+                                            Re Password &nbsp;<span class="required">*</span>
+                                        </label>
+
+                                        <input type="password" class="furgan-Input furgan-Input--text input-text"
+                                               name="rePassword" id="username" autocomplete="username" value="">
+                                    </p>
+
+                                    <p class="furgan-FormRow form-row">
+                                        <input type="hidden" id="furgan-register-nonce" name="furgan-register-nonce" value="45fae70a87">
+                                        <input type="hidden" name="_wp_http_referer" value="/furgan/my-account/">
+                                        <button type="submit" class="furgan-Button button" name="register"
+                                                value="Register">
+                                            Register
+                                        </button>
+                                    </p>
+
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
