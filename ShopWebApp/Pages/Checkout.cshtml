@@ -1,0 +1,220 @@
+﻿@page
+@model CheckoutModel
+@{
+
+}
+
+<div class="banner-wrapper has_background">
+    <img src="~/Theme/assets/images/banner-for-all2.jpg"
+         class="img-responsive attachment-1920x447 size-1920x447" alt="img">
+    <div class="banner-wrapper-inner">
+        <h1 class="page-title">Checkout</h1>
+        <div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+            <ul class="trail-items breadcrumb">
+                <li class="trail-item trail-begin"><a href="index-2.html"><span>Home</span></a></li>
+                <li class="trail-item trail-end active">
+                    <span>Checkout</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<main class="site-main main-container no-sidebar">
+    <div class="container">
+        <div class="row">
+            <div class="main-content col-md-12">
+                <div class="page-main-content">
+                    <div class="furgan">
+
+                        <div class="furgan-notices-wrapper">
+
+                            @*   @foreach (var item in Model.CartItems.Where(x => !x.IsInStock))
+                            {
+                            <div class="alert alert-warning">
+                            <i class="fa fa-warning"></i>
+                            Product "@item.Name" is not in Stock
+                            </div>
+
+                            } *@
+
+                        </div>
+
+                        <div class="furgan-cart-form">
+                            <table class="shop_table shop_table_responsive cart furgan-cart-form__contents"
+                                   cellspacing="0">
+
+                                <thead>
+                                    <tr>
+
+                                        <th class="product-thumbnail">&nbsp;</th>
+                                        <th class="product-name">Product</th>
+                                        <th class="product-price">Unit Price</th>
+                                        <th class="product-quantity">Quantity</th>
+                                        <th class="product-name">Total item price</th>
+                                        <th class="product-name">Discount Rate</th>
+                                        <th class="product-name">Discount Amount</th>
+                                        <th class="product-name">Item Pay Amount</th>
+
+                                        @* <th class="product-subtotal">Total</th> *@
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @foreach (var item in Model.Cart.Items)
+                                    {
+                                        <tr class="furgan-cart-form__cart-item cart_item">
+
+
+
+                                            <td class="product-thumbnail">
+                                                <a href="#">
+                                                    <img src="~/ProductPictures/@item.Picture"
+                                                         class="attachment-furgan_thumbnail size-furgan_thumbnail"
+                                                         alt="img" width="600" height="778">
+                                                </a>
+                                            </td>
+
+                                            <td class="product-name" data-title="Product">
+                                                <a href="#">
+                                                    @item.Name
+                                                </a>
+                                            </td>
+
+                                            <td class="product-price" data-title="Price">
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>@item.UnitPrice
+                                                </span>
+                                            </td>
+
+                                            <td class="product-quantity" data-title="Quantity">
+                                                <div class="quantity">
+
+                                                    <span>@item.Count</span>
+                                                </div>
+                                            </td>
+
+                                            <td class="product-subtotal" data-title="Total">
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>
+                                                    <span id="totalItemPrice-@item.Id">@item.TotalItemPrice</span>
+                                                </span>
+                                            </td>
+
+                                            <td class="product-subtotal" data-title="Total">
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">%</span>
+                                                    <span id="totalItemPrice-@item.Id">@item.DiscountRate</span>
+                                                </span>
+                                            </td>
+
+                                            <td class="product-subtotal" data-title="Total">
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>
+                                                    <span id="totalItemPrice-@item.Id">@item.DiscountAmount</span>
+                                                </span>
+                                            </td>
+
+                                            <td class="product-subtotal" data-title="Total">
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>
+                                                    <span id="totalItemPrice-@item.Id">@item.ItemPayAmount</span>
+                                                </span>
+                                            </td>
+
+                                        </tr>
+                                    }
+
+
+
+                                    <tr>
+                                        <td colspan="6" class="actions">
+                                            <div class="coupon">
+                                                <label for="coupon_code">Coupon:</label> <input type="text"
+                                                                                                name="coupon_code"
+                                                                                                class="input-text"
+                                                                                                id="coupon_code" value=""
+                                                                                                placeholder="Coupon code">
+                                                <button type="submit" class="button" name="apply_coupon"
+                                                        value="Apply coupon">
+                                                    Apply coupon
+                                                </button>
+                                            </div>
+                                            <button type="submit" class="button" name="update_cart" value="Update cart"
+                                                    disabled="">
+                                                Update cart
+                                            </button>
+                                            <input type="hidden" id="furgan-cart-nonce" name="furgan-cart-nonce"
+                                                   value="f41b5bf554"><input type="hidden" name="_wp_http_referer"
+                                                                             value="/furgan/cart/">
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+                        </div>
+
+                        <div class="cart-collaterals">
+                            <div class="cart_totals ">
+                                <h2>Cart totals</h2>
+                                <table class="shop_table shop_table_responsive" cellspacing="0">
+                                    <tbody>
+
+                                        <tr class="cart-subtotal">
+                                            <th> Total Amount </th>
+
+                                            <td data-title="Subtotal">
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>@Model.Cart.TotalAmount
+                                                </span>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr class="cart-subtotal">
+                                            <th> Discount Amount </th>
+
+                                            <td data-title="Subtotal">
+                                                <span class="furgan-Price-amount amount">
+                                                    <span class="furgan-Price-currencySymbol">$</span>@Model.Cart.DiscountAmount
+                                                </span>
+                                            </td>
+
+                                        </tr>
+
+                                        <tr class="order-total">
+                                            <th>Pay Amount</th>
+
+                                            <td data-title="Total">
+                                                <strong>
+                                                    <span class="furgan-Price-amount amount">
+                                                        <span class="furgan-Price-currencySymbol">$</span>@Model.Cart.PayAmount
+                                                    </span>
+                                                </strong>
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+                                <div class="furgan-proceed-to-checkout">
+                                    <a asp-page-handler="Pay"
+                                       class="checkout-button button alt furgan-forward">
+                                        Pay
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

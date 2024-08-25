@@ -1,0 +1,58 @@
+﻿@model List<ShopManagement.Application.Contracts.Order.OrderItemViewModel>
+
+<div class="modal-dialog modal-xl">
+    <div class="modal-content">
+        <div class="modal-header">
+
+            <h5 class="modal-title" id="exampleModalLabel">Order Items</h5>
+
+            <button type="button"
+                    class="sa-close sa-close--modal"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+
+            <div class="card-">
+                <div class="card-body p-5">
+
+                    <table class="table table-bordered table-striped mb-0 ">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Count</th>
+                                <th scope="col">Unit Price</th>
+                                <th scope="col">Discount Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@item.Id</th>
+                                    <td>@item.Product</td>
+                                    <td>@item.Count</td>
+                                    <td>@item.UnitPrice</td>
+                                    <td>@item.DiscountRate%</td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+

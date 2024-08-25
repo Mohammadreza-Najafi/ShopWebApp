@@ -39,7 +39,7 @@
     @RenderBody()
 
     @await Component.InvokeAsync("Footer")
-    
+     
     
     <a href="#" class="backtotop active">
         <i class="fa fa-angle-double-up"></i>
@@ -51,14 +51,25 @@
     <script src="~/Theme/assets/js/countdown.min.js"></script>
     <script src="~/Theme/assets/js/jquery.scrollbar.min.js"></script>
     <script src="~/Theme/assets/js/lightbox.min.js"></script>
-    <script src="~/Theme/assets/js/magnific-popup.min.js"></script>
+    <script src="~/Theme/assets/js/magnific-popup.min.js"></script> 
     <script src="~/Theme/assets/js/slick.js"></script>
     <script src="~/Theme/assets/js/jquery.zoom.min.js"></script>
     <script src="~/Theme/assets/js/threesixty.min.js"></script>
     <script src="~/Theme/assets/js/jquery-ui.min.js"></script>
     <script src="~/Theme/assets/js/mobilemenu.js"></script>    
     <script src="~/Theme/assets/js/functions.js"></script>
-    
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+    <script src="~/Theme/assets/js/plugins.js"></script>
+
+    <script src="~/Theme/assets/js/custom.js"></script>    
+
+    <script>
+        $(document).ready(function () {
+            updateCart();
+        });
+    </script>
 </body>
 
 </html>

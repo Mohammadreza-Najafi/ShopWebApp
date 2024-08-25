@@ -1,0 +1,59 @@
+﻿@page
+@model ShopWebApp.Pages.PaymentResultModel
+@{
+}
+
+<div class="banner-wrapper has_background">
+    <img src="~/Theme/assets/images/banner-for-all2.jpg"
+         class="img-responsive attachment-1920x447 size-1920x447" alt="img">
+    <div class="banner-wrapper-inner">
+        <h1 class="page-title">Checkout</h1>
+        <div role="navigation" aria-label="Breadcrumbs" class="breadcrumb-trail breadcrumbs">
+            <ul class="trail-items breadcrumb">
+                <li class="trail-item trail-begin"><a href="index-2.html"><span>Home</span></a></li>
+                <li class="trail-item trail-end active">
+                    <span>Checkout</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="main-container text-center error-404 not-found">
+    <div class="container">
+
+
+        @if (Model.Result.IsSuccessful)
+        {
+            <div class="alert alert-success">
+
+                <h1 class="title">@Model.Result.Message</h1>
+          
+                @if (!string.IsNullOrWhiteSpace(Model.Result.IssueTrackingNo))
+                {                   
+                    <p class="subtitle">IssueTrackingNo <strong>@Model.Result.IssueTrackingNo</strong></p>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-danger">
+
+                <h1 class="title"> @Model.Result.Message </h1>
+
+            </div>
+        }
+
+        <!-- .page-content -->
+        <a href="index-2.html" class="button">Back to hompage</a>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+

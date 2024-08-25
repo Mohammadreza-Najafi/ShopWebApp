@@ -1,0 +1,94 @@
+﻿@page
+@model ShopWebApp.Areas.Administration.Pages.Shop.Orders.IndexModel
+@{
+    ViewData["title"] = "Orders Management";
+}
+
+
+<div class="container">
+
+    <div class="py-5">
+        <div class="row g-4 align-items-center">
+            <div class="col">
+                <nav class="mb-2" aria-label="breadcrumb">
+                    <ol class="breadcrumb breadcrumb-sa-simple">
+                        <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Orders</li>
+                    </ol>
+                </nav>
+                <h1 class="h3 m-0">Orders</h1>
+            </div>     
+
+        </div>
+    </div>
+
+
+    <div class="card">
+        <table class="sa-datatables-init" data-order='[[ 0, "asc" ]]'>
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>buyer</th>
+                    <th>Total</th>
+                    <th>Total Discount</th>
+                    <th>Pay Amount</th>
+                    <th>Issue Tracking No</th>
+                    <th>Ref Id</th>
+                    <th>Creation Buy</th>
+                    <th>Status</th>
+                    <th>Operation</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                @foreach (var item in Model.Orders)
+                {
+                    <tr>
+                        <td>@item.Id</td>                        
+                        <td>@item.AccountFullName</td>                        
+                        <td>@item.TotalAmount</td>
+                        <td>@item.DiscountAmount</td>
+                        <td>@item.PayAmount</td>
+                        <td>@item.IssueTrackingNo</td>
+                        <td>@item.RefId</td>
+                        <td>@item.CreationDate</td>
+                        <td>
+                            @if (item.IsCanceled)
+                            {
+                                <span class="text-danger">Canceled</span>
+                            }
+                            @if (item.IsPaid)
+                            {
+                                <spna class="text-success">Payed</spna>
+                            }
+                            @if (!item.IsPaid && !item.IsCanceled)
+                            {
+                                <span class="text-warning">Wait Pay</span>
+                            }
+                        </td>
+                        <td>
+                            @if(item.IsPaid == false)
+                            {
+                                <a class="btn btn-success pull-right m-rl-5" asp-page-handler="Confirm" asp-route-id="@item.Id"> 
+                                    <i class="fa fa-check"></i> Confirm
+                                </a>
+
+                                <a class="btn btn-danger pull-right m-rl-5" asp-page-handler="Cancel" asp-route-id="@item.Id">
+                                    <i class="fa fa-close"></i> Cancel
+                                </a>
+                            }
+                            <a class="btn btn-warning pull-right m-rl-5"
+                                href="#showmodal=@Url.Page("./Index","Items", new { id = item.Id})">
+                                <i class="fa fa-edit"></i> Items
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

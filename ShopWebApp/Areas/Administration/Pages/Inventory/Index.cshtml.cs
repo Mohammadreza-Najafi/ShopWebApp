@@ -1,10 +1,15 @@
+using _0_Framework.Infrastructure;
+using _0_Framwork.Infrastructure;
 using InventoryManagement.Application.Contract.Inventory;
+using InventoryManagement.Infrastructure.Configuration.Permissions;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using ShopManagement.Application.Contracts.Product;
 
 namespace ShopWebApp.Areas.Administration.Pages.Inventory
 {
+    [Authorize(Roles = Roles.Administrator)]
     public class IndexModel : PageModel
     {
         public List<InventoryViewModel> Inventory { get; set; }
@@ -22,7 +27,8 @@ namespace ShopWebApp.Areas.Administration.Pages.Inventory
             _inventoryApplication = inventoryApplication;
             _productApplication = productApplication;
         }
-        
+
+        [NeedsPermission(InventoryPermissions.ListInventory)]
         public void OnGet(InventorySearchModel searchModel)
         {
             Products = _productApplication.GetProducts();

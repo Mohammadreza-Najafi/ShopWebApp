@@ -156,67 +156,40 @@
                                     </ul>
                                 </div>
                                 <div class="block-minicart block-dreaming furgan-mini-cart furgan-dropdown">
+
                                     <div class="shopcart-dropdown block-cart-link" data-furgan="furgan-dropdown">
                                         <a class="block-link link-dropdown" href="cart.html">
                                             <span class="flaticon-cart"></span>
-                                            <span class="count">3</span>
+                                            <span class="count" id="cart_items_count">0</span>
                                         </a>
                                     </div>
+
                                     <div class="widget furgan widget_shopping_cart">
                                         <div class="widget_shopping_cart_content">
-                                            <ul class="furgan-mini-cart cart_list product_list_widget">
-                                                <li class="furgan-mini-cart-item mini_cart_item">
-                                                    <a href="#" class="remove remove_from_cart_button">×</a>
-                                                    <a href="#">
-                                                        <img src="~/Theme/assets/images/apro134-1-600x778.jpg"
-                                                             class="attachment-furgan_thumbnail size-furgan_thumbnail"
-                                                             alt="img" width="600" height="778">T-shirt with skirt – Pink&nbsp;
-                                                    </a>
-                                                    <span class="quantity">
-                                                        1 × <span class="furgan-Price-amount amount">
-                                                            <span class="furgan-Price-currencySymbol">$</span>150.00
-                                                        </span>
-                                                    </span>
-                                                </li>
-                                                <li class="furgan-mini-cart-item mini_cart_item">
-                                                    <a href="#" class="remove remove_from_cart_button">×</a>
-                                                    <a href="#">
-                                                        <img src="~/Theme/assets/images/apro1113-600x778.jpg"
-                                                             class="attachment-furgan_thumbnail size-furgan_thumbnail"
-                                                             alt="img" width="600" height="778">Alarm Clock&nbsp;
-                                                    </a>
-                                                    <span class="quantity">
-                                                        1 × <span class="furgan-Price-amount amount">
-                                                            <span class="furgan-Price-currencySymbol">$</span>129.00
-                                                        </span>
-                                                    </span>
-                                                </li>
-                                                <li class="furgan-mini-cart-item mini_cart_item">
-                                                    <a href="#" class="remove remove_from_cart_button">×</a>
-                                                    <a href="#">
-                                                        <img src="~/Theme/assets/images/apro201-1-600x778.jpg"
-                                                             class="attachment-furgan_thumbnail size-furgan_thumbnail"
-                                                             alt="img" width="600" height="778">Chair AAC&nbsp;
-                                                    </a>
-                                                    <span class="quantity">
-                                                        1 × <span class="furgan-Price-amount amount">
-                                                            <span class="furgan-Price-currencySymbol">$</span>139.00
-                                                        </span>
-                                                    </span>
-                                                </li>
+
+                                            <ul class="furgan-mini-cart cart_list product_list_widget" id="cart-items-wrapper">
+
+                                               
+                                             
                                             </ul>
+
                                             <p class="furgan-mini-cart__total total">
                                                 <strong>Subtotal:</strong>
                                                 <span class="furgan-Price-amount amount">
                                                     <span class="furgan-Price-currencySymbol">$</span>418.00
                                                 </span>
                                             </p>
+
                                             <p class="furgan-mini-cart__buttons buttons">
-                                                <a href="cart.html" class="button furgan-forward">Viewcart</a>
+
+                                                <a asp-page="Cart" class="button furgan-forward">Viewcart</a>
+
                                                 <a href="checkout.html" class="button checkout furgan-forward">Checkout</a>
                                             </p>
+
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
                         </div>

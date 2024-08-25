@@ -3,6 +3,7 @@ using CommentManagement.Infrastructure.EFCore;
 using DiscountManagement.Infrastructure.EFCore;
 using InventoryManagement.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
+using ShopManagement.Application.Contracts.Order;
 using ShopManagement.Domain.ProductPictureAgg;
 using ShopManagement.Infrastructure.EFCore;
 
@@ -35,22 +36,22 @@ namespace _01_ShopQuery.Query
             var product = _context.Products
                 .Include(x => x.Category)
                 .Include(x => x.ProductPictures)
-                .Select(product => new ProductQueryModel
+                .Select(x => new ProductQueryModel
                 {
-                    Id = product.Id,
-                    Category = product.Category.Name,
-                    Name = product.Name,
-                    Picture = product.Picture,
-                    PictureAlt = product.PictureAlt,
-                    PictureTitle = product.PictureTitle,
-                    Slug = product.Slug,
-                    Description = product.Description,
-                    CategorySlug = product.Category.Slug,
-                    Code = product.Code,
-                    Keywords = product.Keywords,
-                    MetaDescription = product.MetaDescription,
-                    ShortDescription = product.ShortDescription,
-                    Pictures = MapProductPictures(product.ProductPictures)
+                    Id = x.Id,
+                    Category = x.Category.Name,
+                    Name = x.Name,
+                    Picture = x.Picture,
+                    PictureAlt = x.PictureAlt,
+                    PictureTitle = x.PictureTitle,
+                    Slug = x.Slug,
+                    Description = x.Description,
+                    CategorySlug = x.Category.Slug,
+                    Code = x.Code,
+                    Keywords = x.Keywords,
+                    MetaDescription = x.MetaDescription,
+                    ShortDescription = x.ShortDescription,
+                    Pictures = MapProductPictures(x.ProductPictures)
 
 
                 }).FirstOrDefault(x => x.Slug == slug);
@@ -62,8 +63,11 @@ namespace _01_ShopQuery.Query
 
             if (productInventory != null)
             {
+                product.IsInStock = productInventory.InStock;   
                 var Price = productInventory.UnitPrice;
                 product.Price = Price.ToString();
+                product.DoublePrice = Price;
+
                 product.IsInStock = productInventory.InStock;
 
                 var discount = discounts.FirstOrDefault(x => x.ProductId == product.Id);
@@ -215,6 +219,20 @@ namespace _01_ShopQuery.Query
 
 
             return products;
+        }
+
+        public List<CartItem> CheckInventoryStatus(List<CartItem> cartItems)
+        {
+            var inventory = _inventoryContext.Inventory.ToList();
+
+            foreach (var cartItem in cartItems.Where(cartItem => inventory.Any(x => x.ProductId == cartItem.Id && x.InStock)))
+            {        
+                    var itemInventory = inventory.Find(x => x.ProductId == cartItem.Id);
+
+                cartItem.IsInStock = itemInventory.CalculateInventoryCount() >= cartItem.Count;
+            }
+
+            return cartItems;
         }
     }
 }
